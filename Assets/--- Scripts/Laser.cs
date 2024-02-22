@@ -21,11 +21,25 @@ public class Laser : MonoBehaviour
         _count++;
 
         if (_count >= _differentHeightLaser.Length)
+        {
             _count = 0;
+            foreach (var mod in _modulesToLaser)
+            {
+                mod.IsDeathModule = false;
+            }
+        }
 
         Vector2 size = _laserImg.rectTransform.sizeDelta;
         size.y = _differentHeightLaser[_count];
         _laserImg.rectTransform.sizeDelta = size;
+
+        if (_count == _differentHeightLaser.Length - 1)
+        {
+            foreach (var mod in _modulesToLaser)
+            {
+                mod.IsDeathModule = true;
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()

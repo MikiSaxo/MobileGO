@@ -1,34 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Module : MonoBehaviour
 {
-    [Header("----- Modules -----")] [SerializeField]
-    private Module _topModule;
-
+    [Header("----- Modules -----")]
+    [SerializeField] private Module _topModule;
     [SerializeField] private Module _leftModule;
     [SerializeField] private Module _rightModule;
     [SerializeField] private Module _downModule;
 
-    [Header("----- Wall -----")] [SerializeField]
-    private float _____;
+    private Wall _topWall { get; set; }
+    private Wall _leftWall { get; set; }
+    private Wall _rightWall { get; set; }
+    private Wall _downWall { get; set; }
 
-    [field: SerializeField] public Wall TopWall { get; set; }
-    [field: SerializeField] public Wall LeftWall { get; set; }
-    [field: SerializeField] public Wall RightWall { get; set; }
-    [field: SerializeField] public Wall DownWall { get; set; }
+    public bool IsDeathModule { get; set; }
 
+    
+    private void Start()
+    {
+        PlayerManager.Instance.PlayerHasSwipe += CheckDeathModule;
+    }
 
     public Module GetModuleNeighbor(Directions dir)
     {
-        if (dir == Directions.Right && _rightModule != null && RightWall == null)
+        if (dir == Directions.Right && _rightModule != null && _rightWall == null)
             return _rightModule;
-        if (dir == Directions.Left && _leftModule != null && LeftWall == null)
+        if (dir == Directions.Left && _leftModule != null && _leftWall == null)
             return _leftModule;
-        if (dir == Directions.Top && _topModule != null && TopWall == null)
+        if (dir == Directions.Top && _topModule != null && _topWall == null)
             return _topModule;
-        if (dir == Directions.Down && _downModule != null && DownWall == null)
+        if (dir == Directions.Down && _downModule != null && _downWall == null)
             return _downModule;
 
         return null;
@@ -36,12 +40,21 @@ public class Module : MonoBehaviour
 
     public void AddWall(Wall top, Wall left, Wall right, Wall down)
     {
-        TopWall = top;
-        LeftWall = left;
-        RightWall = right;
-        DownWall = down;
+        _topWall = top;
+        _leftWall = left;
+        _rightWall = right;
+        _downWall = down;
     }
 
+    private void CheckDeathModule()
+    {
+        
+    }
+
+    private void OnDisable()
+    {
+        PlayerManager.Instance.PlayerHasSwipe -= CheckDeathModule;
+    }
 
     private void OnDrawGizmosSelected()
     {

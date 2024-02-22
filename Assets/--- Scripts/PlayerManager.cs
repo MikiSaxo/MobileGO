@@ -11,22 +11,50 @@ public class PlayerManager : MonoBehaviour
     public event Action PlayerHasSwipe;
     
     [SerializeField] private Module _currentModule;
+    [SerializeField] private float _timeToMove = .5f;
 
+    private Module _startModule;
+    private bool _isDead;
 
     private void Awake()
     {
         Instance = this;
     }
 
+    private void Start()
+    {
+        _startModule = _currentModule;
+    }
+
     public void WantToSwipe(Directions dir)
     {
+        if (_isDead) return;
+        
         var mod = _currentModule.GetModuleNeighbor(dir);
         if (mod == null) return;
 
         _currentModule = mod;
         gameObject.transform.DOComplete();
-        gameObject.transform.DOMove(_currentModule.gameObject.transform.position, .5f);
+        gameObject.transform.DOMove(_currentModule.gameObject.transform.position, _timeToMove);
         PlayerHasSwipe?.Invoke();
+        CheckIsDead();
+    }
+
+    private void CheckIsDead()
+    {
+        if(_currentModule.IsDeathModule)
+            StartCoroutine(GoDeath());
+    }
+
+    IEnumerator GoDeath()
+    {
+        _isDead = true;
+        
+        yield return new WaitForSeconds(_timeToMove);
+        
+        gameObject.transform.DOMove(_startModule.gameObject.transform.position, 0f);
+        _currentModule = _startModule;
+        _isDead = false;
     }
 }
 
