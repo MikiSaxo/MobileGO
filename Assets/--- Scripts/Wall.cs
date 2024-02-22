@@ -13,7 +13,6 @@ public class Wall : MonoBehaviour
     private void Start()
     {
         PlayerManager.Instance.PlayerHasSwipe += ChangePos;
-        //SetWallToModule();
     }
 
     private void ChangePos()
