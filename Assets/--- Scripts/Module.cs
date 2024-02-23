@@ -21,7 +21,7 @@ public class Module : MonoBehaviour
     
     private void Start()
     {
-        PlayerManager.Instance.PlayerHasSwipe += CheckDeathModule;
+        // PlayerManager.Instance.PlayerHasSwipe += CheckDeathModule;
     }
 
     public Module GetModuleNeighbor(Directions dir)
@@ -46,14 +46,14 @@ public class Module : MonoBehaviour
         _downWall = down;
     }
 
-    private void CheckDeathModule()
-    {
-        
-    }
+    // private void CheckDeathModule()
+    // {
+    //     
+    // }
 
     private void OnDisable()
     {
-        PlayerManager.Instance.PlayerHasSwipe -= CheckDeathModule;
+        // PlayerManager.Instance.PlayerHasSwipe -= CheckDeathModule;
     }
 
     private void OnDrawGizmosSelected()

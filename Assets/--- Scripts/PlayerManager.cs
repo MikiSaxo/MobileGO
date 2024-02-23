@@ -32,7 +32,12 @@ public class PlayerManager : MonoBehaviour
         
         var mod = _currentModule.GetModuleNeighbor(dir);
         if (mod == null) return;
+        if (mod.GetComponent<WeakGround>() != null && mod.GetComponent<WeakGround>().IsWeakModule)
+            return;
 
+        if (_currentModule.GetComponent<WeakGround>() != null)
+            _currentModule.GetComponent<WeakGround>().GoBroken();
+        
         _currentModule = mod;
         gameObject.transform.DOComplete();
         gameObject.transform.DOMove(_currentModule.gameObject.transform.position, _timeToMove);
