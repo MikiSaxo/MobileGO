@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
 
     private Module _startModule;
     private bool _isDead;
+    private bool _isEnd;
 
     private void Awake()
     {
@@ -35,11 +36,14 @@ public class PlayerManager : MonoBehaviour
         if (CheckIfCanSwipe(mod) == false) return;
     
         mod.OnPlayerEnter();
-        
+
+
         _currentModule = mod;
         gameObject.transform.DOComplete();
         gameObject.transform.DOMove(_currentModule.gameObject.transform.position, _timeToMove);
         PlayerHasSwipe?.Invoke();
+        
+        if (_isEnd) StartCoroutine(WaitToGoNextStation(_startModule));
         
         CheckIsDead();
     }
@@ -51,10 +55,25 @@ public class PlayerManager : MonoBehaviour
         return mod.CanMove();
     }
 
-    private void CheckIfEnd(Module mod)
+    public void GoStartPoint(Module mod)
     {
-        
+        _isEnd = true;
+        _startModule = mod;
     }
+
+    IEnumerator WaitToGoNextStation(Module mod)
+    {
+        yield return new WaitForSeconds(_timeToMove);
+        
+        _currentModule = mod;
+        gameObject.transform.DOKill();
+        gameObject.transform.DOMove(_currentModule.gameObject.transform.position, _timeToMove);
+        
+        yield return new WaitForSeconds(_timeToMove);
+        
+        _isEnd = false;
+    }
+
 
     private void CheckIsDead()
     {
