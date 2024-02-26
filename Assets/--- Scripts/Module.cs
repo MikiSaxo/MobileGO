@@ -40,10 +40,22 @@ public class Module : MonoBehaviour
 
     public void AddWall(Wall top, Wall left, Wall right, Wall down)
     {
-        _topWall = top;
-        _leftWall = left;
-        _rightWall = right;
-        _downWall = down;
+        if (top != null)
+            _topWall = top;
+        if (left != null)
+            _leftWall = left;
+        if (right != null)
+            _rightWall = right;
+        if (down != null)
+            _downWall = down;
+    }
+
+    public void ResetWall()
+    {
+        _topWall = null;
+        _leftWall = null;
+        _rightWall = null;
+        _downWall = null;
     }
 
     // private void CheckDeathModule()

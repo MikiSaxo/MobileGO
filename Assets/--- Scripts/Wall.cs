@@ -42,14 +42,6 @@ public class Wall : MonoBehaviour
         {
             gameObject.transform.DOScale(Vector3.one * .5f, .5f).SetEase(Ease.OutBounce);
         }
-
-        StartCoroutine(WaitSetWallModule());
-    }
-
-    IEnumerator WaitSetWallModule()
-    {
-        yield return new WaitForSeconds(0.01f);
-        
         SetWallToModule();
     }
 
@@ -76,19 +68,19 @@ public class Wall : MonoBehaviour
     {
         var topMod = _wallInfos[_count].ModuleAtTop;
         if (topMod != null)
-            topMod.AddWall(null, null, null, null);
+            topMod.ResetWall();
 
         var leftMod = _wallInfos[_count].ModuleAtLeft;
         if (leftMod != null)
-            leftMod.AddWall(null, null, null, null);
+            leftMod.ResetWall();
 
         var rightMod = _wallInfos[_count].ModuleAtRight;
         if (rightMod != null)
-            rightMod.AddWall(null, null, null, null);
+            rightMod.ResetWall();
 
         var downMod = _wallInfos[_count].ModuleAtDown;
         if (downMod != null)
-            downMod.AddWall(null, null, null, null);
+            downMod.ResetWall();
     }
 
     private void OnDrawGizmosSelected()
