@@ -31,30 +31,29 @@ public class PlayerManager : MonoBehaviour
         if (_isDead) return;
 
         var mod = _currentModule.GetModuleNeighbor(dir);
-        
-        if (mod == null) return;
-        
-        if (mod.GetComponent<WeakGround>() != null && mod.GetComponent<WeakGround>().IsWeakModule) return;
-            
-        if (mod.GetComponent<Door>() != null && !mod.GetComponent<Door>().IsOpen) return;
 
-        if (mod.GetComponent<Key>() != null && mod.GetComponent<Key>().HasGetKey == false)
-            mod.GetComponent<Key>().GetKey();
-        
-        if (mod.GetComponent<Key>() != null && mod.GetComponent<Key>().HasGetKey == false)
-            mod.GetComponent<Key>().GetKey();
-        
-        if (mod.GetComponent<BonusCollectable>() != null && mod.GetComponent<BonusCollectable>().HasGetBonus == false)
-            mod.GetComponent<BonusCollectable>().GetBonus();
-
-        if (_currentModule.GetComponent<WeakGround>() != null)
-            _currentModule.GetComponent<WeakGround>().GoBroken();
+        if (CheckIfCanSwipe(mod) == false) return;
+    
+        mod.OnPlayerEnter();
         
         _currentModule = mod;
         gameObject.transform.DOComplete();
         gameObject.transform.DOMove(_currentModule.gameObject.transform.position, _timeToMove);
         PlayerHasSwipe?.Invoke();
+        
         CheckIsDead();
+    }
+
+    private bool CheckIfCanSwipe(Module mod)
+    {
+        if (mod == null) return false;
+
+        return mod.CanMove();
+    }
+
+    private void CheckIfEnd(Module mod)
+    {
+        
     }
 
     private void CheckIsDead()

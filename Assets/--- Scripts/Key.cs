@@ -9,14 +9,21 @@ public class Key : Module
     [Header("--- Key ---")] 
     [SerializeField] private Image _keyImg;
     [SerializeField] private Door _door;
-    
-    
-    public bool HasGetKey { get; private set; }
+
+
+    private bool _hasGetKey;
     
     public void GetKey()
     {
-        HasGetKey = true;
+        if(_hasGetKey) return;
+        
+        _hasGetKey = true;
         _keyImg.DOFade(0, 1f);
         _door.OpenDoor();
+    }
+
+    public override void OnPlayerEnter()
+    {
+        GetKey();
     }
 }

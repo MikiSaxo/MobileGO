@@ -51,6 +51,17 @@ public class Module : MonoBehaviour
     //     
     // }
 
+
+    public virtual void OnPlayerEnter()
+    {
+        
+    }
+
+    public virtual bool CanMove()
+    {
+        return true;
+    }
+
     private void OnDisable()
     {
         // PlayerManager.Instance.PlayerHasSwipe -= CheckDeathModule;

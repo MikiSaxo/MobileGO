@@ -8,13 +8,20 @@ public class BonusCollectable : Module
 {
     [Header("--- Bonus ---")] 
     [SerializeField] private Image _bonusImg;
-    
-    public bool HasGetBonus { get; private set; }
+
+    private bool _hasGetBonus;
     
     public void GetBonus()
     {
+        if (_hasGetBonus) return;
+        
+        _hasGetBonus = true;
         UIManager.Instance.UpdateNbBonus(1);
-        HasGetBonus = true;
         _bonusImg.DOFade(0, 1f);
+    }
+    
+    public override void OnPlayerEnter()
+    {
+        GetBonus();
     }
 }

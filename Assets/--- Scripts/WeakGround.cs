@@ -11,9 +11,20 @@ public class WeakGround : Module
 
     public bool IsWeakModule { get; set; }
 
-    public void GoBroken()
+    private void GoBroken()
     {
         _groundImg.sprite = _brokenGround;
         IsWeakModule = true;
     }
+
+    public override void OnPlayerEnter()
+    {
+        GoBroken();
+    }
+
+    public override bool CanMove()
+    {
+        return !IsWeakModule;
+    }
+
 }
