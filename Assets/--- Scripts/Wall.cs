@@ -43,6 +43,13 @@ public class Wall : MonoBehaviour
             gameObject.transform.DOScale(Vector3.one * .5f, .5f).SetEase(Ease.OutBounce);
         }
 
+        StartCoroutine(WaitSetWallModule());
+    }
+
+    IEnumerator WaitSetWallModule()
+    {
+        yield return new WaitForSeconds(0.01f);
+        
         SetWallToModule();
     }
 
