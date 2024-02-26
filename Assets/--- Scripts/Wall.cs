@@ -27,7 +27,15 @@ public class Wall : MonoBehaviour
             _count = 0;
 
         gameObject.transform.DOComplete();
-        gameObject.transform.DOMove(_wallInfos[_count].NewPos.position, .5f);
+        if (_wallInfos[_count].NewPos != null)
+        {
+            gameObject.transform.DOMove(_wallInfos[_count].NewPos.position, .5f);
+            gameObject.transform.DOScale(Vector3.one, .5f).SetEase(Ease.OutBounce);
+        }
+        else
+        {
+            gameObject.transform.DOScale(Vector3.one * .5f, .5f).SetEase(Ease.OutBounce);
+        }
         
         
         SetWallToModule();
