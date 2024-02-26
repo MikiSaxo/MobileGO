@@ -15,14 +15,23 @@ public class Door : Wall
 
     private void Start()
     {
+        PlayerManager.Instance.PlayerHasSwipe += SetWallToModule;
+
         SetWallToModule();
     }
 
     public void OpenDoor()
     {
+        PlayerManager.Instance.PlayerHasSwipe -= SetWallToModule;
+
         ResetOldWall();
 
         _doorImg.gameObject.transform.DOComplete();
         _doorImg.gameObject.transform.DOScale(Vector3.one * .5f, .5f);
+    }
+    
+    private void OnDisable()
+    {
+        PlayerManager.Instance.PlayerHasSwipe -= SetWallToModule;
     }
 }
