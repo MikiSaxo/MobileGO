@@ -40,6 +40,12 @@ public class PlayerManager : MonoBehaviour
 
         if (mod.GetComponent<Key>() != null && mod.GetComponent<Key>().HasGetKey == false)
             mod.GetComponent<Key>().GetKey();
+        
+        if (mod.GetComponent<Key>() != null && mod.GetComponent<Key>().HasGetKey == false)
+            mod.GetComponent<Key>().GetKey();
+        
+        if (mod.GetComponent<BonusCollectable>() != null && mod.GetComponent<BonusCollectable>().HasGetBonus == false)
+            mod.GetComponent<BonusCollectable>().GetBonus();
 
         if (_currentModule.GetComponent<WeakGround>() != null)
             _currentModule.GetComponent<WeakGround>().GoBroken();

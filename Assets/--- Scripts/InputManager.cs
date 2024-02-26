@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class MainManager : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
     [SerializeField] private PlayerManager _player;
     [SerializeField] private float _minSwipeDistance = 50f;

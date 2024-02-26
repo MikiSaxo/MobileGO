@@ -9,12 +9,16 @@ public class Spike : Module
 {
     [Header("--- Spike ---")]
     [SerializeField] private Image _spikeImg;
+    [SerializeField] private bool _isSpikeAtStart;
 
     private int _count = 0;
 
     private void Start()
     {
         PlayerManager.Instance.PlayerHasSwipe += ChangeState;
+        
+        if(!_isSpikeAtStart)
+            ChangeState();
     }
 
     private void ChangeState()
