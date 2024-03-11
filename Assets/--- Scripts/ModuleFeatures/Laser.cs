@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Laser : MonoBehaviour
 {
     [SerializeField] private Module[] _modulesToLaser;
+    
     [SerializeField] private Image _laserImg;
-    [SerializeField] private float[] _differentHeightLaser;
+    [SerializeField] private Image _laserModuleImg;
+    
+    [SerializeField] private Sprite[] _spritesLaser;
+    [SerializeField] private Sprite[] _spritesLaserModule;
+
+    private List<Image> _laserPosPrefabs = new List<Image>();
 
     private int _count = 0;
     
@@ -19,7 +26,7 @@ public class Laser : MonoBehaviour
 
     private void ResetStartPos()
     {
-        _count = _differentHeightLaser.Length;
+        _count = _spritesLaser.Length;
         ChangeState();
     }
 
@@ -27,7 +34,7 @@ public class Laser : MonoBehaviour
     {
         _count++;
 
-        if (_count >= _differentHeightLaser.Length)
+        if (_count >= _spritesLaser.Length)
         {
             _count = 0;
             foreach (var mod in _modulesToLaser)
@@ -36,11 +43,11 @@ public class Laser : MonoBehaviour
             }
         }
 
-        Vector2 size = _laserImg.rectTransform.sizeDelta;
-        size.y = _differentHeightLaser[_count];
-        _laserImg.rectTransform.sizeDelta = size;
+        _laserImg.sprite = _spritesLaser[_count];
+        _laserImg.transform.DOScale(_spritesLaser[_count] == null ? 0 : 1, 0);
+        _laserModuleImg.sprite = _spritesLaserModule[_count];
 
-        if (_count == _differentHeightLaser.Length - 1)
+        if (_count == _spritesLaser.Length - 1)
         {
             foreach (var mod in _modulesToLaser)
             {

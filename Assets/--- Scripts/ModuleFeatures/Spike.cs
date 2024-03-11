@@ -7,6 +7,7 @@ public class Spike : ModuleFeature
     [Header("--- Spike ---")]
     [SerializeField] private Image _spikeImg;
     [SerializeField] private bool _isSpikeAtStart;
+    [SerializeField] private Sprite[] _sprites;
 
     private int _count = 0;
     private int _startCount = 0;
@@ -30,20 +31,22 @@ public class Spike : ModuleFeature
     protected override void ChangeState()
     {
         _count++;
-        _spikeImg.gameObject.transform.DOComplete();
+        // _spikeImg.gameObject.transform.DOComplete();
         
-        if (_count > 1)
+        if (_count >= _sprites.Length)
         {
             _count = 0;
             _goDead = true;
 
-            _spikeImg.gameObject.transform.DOScale(Vector3.one, .5f);
+            // _spikeImg.gameObject.transform.DOScale(Vector3.one, .5f);
         }
         else
         {
             _goDead = false;
-            _spikeImg.gameObject.transform.DOScale(Vector3.one*.5f, .5f);
+            // _spikeImg.gameObject.transform.DOScale(Vector3.one*.5f, .5f);
         }
+        
+        _spikeImg.sprite = _sprites[_count];
     }
     
     public override void OnPlayerEnter()

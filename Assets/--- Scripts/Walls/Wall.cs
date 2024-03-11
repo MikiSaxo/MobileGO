@@ -12,26 +12,19 @@ public class Wall : MonoBehaviour
     private int _count = 0;
     private int _startCount = 0;
 
+    protected bool _isBlocked = false;
+
     private void Start()
     {
         PlayerManager.Instance.PlayerHasSwipe += ChangePos;
         PlayerManager.Instance.PlayerIsDead += ResetStartPos;
-
-        if (_startNextState)
-        {
-            ChangePos();
-            _startCount = 0;
-        }
-        else
-        {
-            SetWallToModule();
-            _startCount = _wallInfos.Length-1;
-        }
+        UIManager.Instance.GoMagnetWalls += GoWaitToReplace;
     }
 
     private void ChangePos()
     {
         if (_wallInfos.Length <= 1) return;
+        if (_isBlocked) return;
 
         ResetOldWall();
 
@@ -40,6 +33,13 @@ public class Wall : MonoBehaviour
         if (_count >= _wallInfos.Length)
             _count = 0;
 
+        Move();
+
+        SetWallToModule();
+    }
+
+    private void Move()
+    {
         gameObject.transform.DOComplete();
         if (_wallInfos[_count].NewPos != null)
         {
@@ -50,12 +50,12 @@ public class Wall : MonoBehaviour
         {
             gameObject.transform.DOScale(Vector3.one * .5f, .5f).SetEase(Ease.OutBounce);
         }
-
-        SetWallToModule();
     }
 
     protected void SetWallToModule()
     {
+        if (_isBlocked) return;
+
         var topMod = _wallInfos[_count].ModuleAtTop;
         if (topMod != null)
             topMod.AddWall(new []{ null, null, null, this});
@@ -71,6 +71,28 @@ public class Wall : MonoBehaviour
         var downMod = _wallInfos[_count].ModuleAtDown;
         if (downMod != null)
             downMod.AddWall(new []{this, null, null, null});
+    }
+
+    private void GoWaitToReplace()
+    {
+        StartCoroutine(WaitToReplace());
+    }
+
+    IEnumerator WaitToReplace()
+    {
+        yield return new WaitForSeconds(.01f);
+        
+        if (_startNextState)
+        {
+            ChangePos();
+            _startCount = 0;
+        }
+        else
+        {
+            SetWallToModule();
+            Move();
+            _startCount = _wallInfos.Length-1;
+        }
     }
 
     protected void ResetOldWall()
@@ -129,5 +151,6 @@ public class Wall : MonoBehaviour
     {
         PlayerManager.Instance.PlayerHasSwipe -= ChangePos;
         PlayerManager.Instance.PlayerIsDead -= ResetStartPos;
+        UIManager.Instance.GoMagnetWalls -= GoWaitToReplace;
     }
 }

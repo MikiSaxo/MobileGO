@@ -14,11 +14,24 @@ public class StartPoint : ModuleFeature
 
     protected override void Start()
     {
+        UIManager.Instance.GoMagnetModules += GoMagnetModules;
+        
         var imgRect = _imgSprite.rectTransform.rect;
         _imgSize = new Vector2(imgRect.width, imgRect.height);
 
+       
+        // print($"----> {new Vector3(pos.x, pos.y + imgSize.y, 0)}");
+    }
+
+    private void GoMagnetModules()
+    {
         _module = gameObject.GetComponent<Module>();
         _module.Magnet(_imgSize);
-        // print($"----> {new Vector3(pos.x, pos.y + imgSize.y, 0)}");
+    }
+    
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        UIManager.Instance.GoMagnetModules -= GoMagnetModules;
     }
 }

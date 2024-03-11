@@ -69,6 +69,17 @@ MonoBehaviour:
   _leftModule: {fileID: 0}
   _rightModule: {fileID: 0}
   _downModule: {fileID: 0}
+  _imgMod: {fileID: 2034794470573592607}
+  _spritesMod:
+  - {fileID: 1582647589, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: -1706962305, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: 647821961, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: -321295499, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: 151780048, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: 521485314, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: 1090716721, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: -977407644, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: -521278719, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
 --- !u!1 &7965652253702090334
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,8 +22,8 @@ public class Door : Wall
 
     public void OpenDoor()
     {
-        PlayerManager.Instance.PlayerHasSwipe -= SetWallToModule;
-
+        _isBlocked = true;
+        
         ResetOldWall();
 
         _doorImg.gameObject.transform.DOComplete();
@@ -32,8 +32,8 @@ public class Door : Wall
 
     public void CloseDoor()
     {
-        PlayerManager.Instance.PlayerHasSwipe += SetWallToModule;
-        
+        _isBlocked = false;
+
         SetWallToModule();
 
         _doorImg.gameObject.transform.DOComplete();

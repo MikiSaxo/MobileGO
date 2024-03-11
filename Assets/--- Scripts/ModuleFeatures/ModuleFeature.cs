@@ -25,7 +25,7 @@ public class ModuleFeature : MonoBehaviour
     {
     }
     
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         PlayerManager.Instance.PlayerHasSwipe -= ChangeState;
         PlayerManager.Instance.PlayerIsDead -= ResetStartPos;

@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1ded4fefdfae17c4395018d3c9673bb8, type: 3}
+  m_Sprite: {fileID: -860142923, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _groundImg: {fileID: 2033082761513310874}
-  _brokenGround: {fileID: 21300000, guid: 423ebd87a48f21147ada298699071390, type: 3}
+  _brokenGround: {fileID: -713557065, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
 --- !u!114 &2021159941135956097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,3 +146,5 @@ MonoBehaviour:
   _leftModule: {fileID: 0}
   _rightModule: {fileID: 0}
   _downModule: {fileID: 0}
+  _imgMod: {fileID: 0}
+  _spritesMod: []

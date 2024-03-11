@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Module : MonoBehaviour
 {
@@ -12,6 +14,10 @@ public class Module : MonoBehaviour
     [SerializeField] protected Module _leftModule;
     [SerializeField] protected Module _rightModule;
     [SerializeField] protected Module _downModule;
+    
+    [Header("----- Sprites -----")]
+    [SerializeField] protected Image _imgMod;
+    [SerializeField] protected Sprite[] _spritesMod;
 
     public bool IsDeathModule { get; set; }
 
@@ -39,6 +45,10 @@ public class Module : MonoBehaviour
     {
         if(GetComponent<ModuleFeature>() != null)
             _moduleFeature = GetComponent<ModuleFeature>();
+        
+        int randomNum = Random.Range(0, _spritesMod.Length);
+        if(_imgMod != null)
+            _imgMod.sprite = _spritesMod[randomNum];
     }
 
     public Module GetModuleNeighbor(Directions dir)

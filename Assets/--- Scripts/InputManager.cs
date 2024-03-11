@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
-
 public class InputManager : MonoBehaviour
 {
+
     [SerializeField] private PlayerManager _player;
     [SerializeField] private float _minSwipeDistance = 50f;
 
@@ -16,7 +17,7 @@ public class InputManager : MonoBehaviour
     
     private Vector2 _swipeStartPos;
     private Vector2 _swipeEndPos;
-
+    
     void Update()
     {
         if (Input.GetMouseButtonDown(0))

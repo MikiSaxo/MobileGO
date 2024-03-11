@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 4479206990606733415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2356509090566117397}
@@ -59,15 +59,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7921569, g: 0.30636713, b: 0.117647074, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -819228543, guid: 91b8f506637e4d1499b6bf1c3b23e52e, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: -320413229, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -101,18 +101,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5095521152757087825}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2356509090566117397}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -269.94, y: 0}
-  m_SizeDelta: {x: 428.68, y: 3}
+  m_AnchoredPosition: {x: -200, y: 0}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2075797827313296222
 CanvasRenderer:
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7921569, g: 0.30636713, b: 0.117647074, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -208,13 +208,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   _laserImg: {fileID: 1874179549756475560}
-  _differentHeightLaser:
-  - 3
-  - 5
-  - 8
-  - 30
+  _laserModuleImg: {fileID: 6846313264838607802}
+  _spritesLaser:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: -1542040541, guid: da3fc610969670840aecf43cd2e82110, type: 3}
+  - {fileID: 1615918818, guid: da3fc610969670840aecf43cd2e82110, type: 3}
+  _spritesLaserModule:
+  - {fileID: -320413229, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: 221549680, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: 1695218051, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: -934970501, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
 --- !u!114 &4224107813718250751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,3 +237,5 @@ MonoBehaviour:
   _leftModule: {fileID: 0}
   _rightModule: {fileID: 0}
   _downModule: {fileID: 0}
+  _imgMod: {fileID: 0}
+  _spritesMod: []

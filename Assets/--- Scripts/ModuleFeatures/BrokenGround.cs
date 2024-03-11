@@ -26,6 +26,7 @@ public class BrokenGround : ModuleFeature
     
     private void GoBroken()
     {
+        print("allo");
         _groundImg.sprite = _brokenGround;
         IsBrokenModule = true;
         _module.IsBlockedModule = true;

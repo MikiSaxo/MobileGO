@@ -8,6 +8,9 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+    
+    public event Action GoMagnetModules;
+    public event Action GoMagnetWalls;
 
     [SerializeField] private TMP_Text _bonusTxt;
 
@@ -21,6 +24,14 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         _bonusTxt.text = $"{_bonusCount}";
+        StartCoroutine(WaitMagnet());
+    }
+
+    IEnumerator WaitMagnet()
+    {
+        GoMagnetModules?.Invoke();
+        yield return new WaitForSeconds(.1f);
+        GoMagnetWalls?.Invoke();
     }
 
     public void UpdateNbBonus(int add)
