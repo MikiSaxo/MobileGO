@@ -7923,11 +7923,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: _differentHeightLaser.Array.data[1]
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: _differentHeightLaser.Array.data[2]
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: _differentHeightLaser.Array.data[3]

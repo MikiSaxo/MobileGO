@@ -58,19 +58,19 @@ public class Wall : MonoBehaviour
     {
         var topMod = _wallInfos[_count].ModuleAtTop;
         if (topMod != null)
-            topMod.AddWall(null, null, null, this);
+            topMod.AddWall(new []{ null, null, null, this});
 
         var leftMod = _wallInfos[_count].ModuleAtLeft;
         if (leftMod != null)
-            leftMod.AddWall(null, null, this, null);
+            leftMod.AddWall(new []{null, null, this, null});
 
         var rightMod = _wallInfos[_count].ModuleAtRight;
         if (rightMod != null)
-            rightMod.AddWall(null, this, null, null);
+            rightMod.AddWall(new []{null, this, null, null});
 
         var downMod = _wallInfos[_count].ModuleAtDown;
         if (downMod != null)
-            downMod.AddWall(this, null, null, null);
+            downMod.AddWall(new []{this, null, null, null});
     }
 
     protected void ResetOldWall()
@@ -100,6 +100,8 @@ public class Wall : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        if (_wallInfos.Length == 0) return;
+        
         foreach (var wall in _wallInfos)
         {
             if (wall.NewPos == null) return;

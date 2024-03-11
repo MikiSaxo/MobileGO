@@ -13,17 +13,27 @@ public class Module : MonoBehaviour
     [SerializeField] protected Module _rightModule;
     [SerializeField] protected Module _downModule;
 
-    private Wall _topWall { get; set; }
-    private Wall _leftWall { get; set; }
-    private Wall _rightWall { get; set; }
-    private Wall _downWall { get; set; }
-
     public bool IsDeathModule { get; set; }
 
-    
+    private List<Module> _modules = new List<Module>();
+    private List<Wall> _walls = new List<Wall>();
+
     public bool IsTreated { get; set; }
 
     private ModuleFeature _moduleFeature;
+
+    private void Awake()
+    {
+        _modules.Add(_topModule);
+        _modules.Add(_leftModule);
+        _modules.Add(_rightModule);
+        _modules.Add(_downModule);
+  
+        for (int i = 0; i < 4; i++)
+        {
+            _walls.Add(null);
+        }
+    }
 
     private void Start()
     {
@@ -33,70 +43,64 @@ public class Module : MonoBehaviour
 
     public Module GetModuleNeighbor(Directions dir)
     {
-        if (dir == Directions.Right && _rightModule != null && _rightWall == null)
-            return _rightModule;
-        if (dir == Directions.Left && _leftModule != null && _leftWall == null)
-            return _leftModule;
-        if (dir == Directions.Top && _topModule != null && _topWall == null)
-            return _topModule;
-        if (dir == Directions.Down && _downModule != null && _downWall == null)
-            return _downModule;
+        if (dir == Directions.Right && _modules[2] != null && _walls[2] == null)
+            return _modules[2];
+        if (dir == Directions.Left && _modules[1] != null && _walls[1] == null)
+            return _modules[1];
+        if (dir == Directions.Top && _modules[0] != null && _walls[0] == null)
+            return _modules[0];
+        if (dir == Directions.Down && _modules[3] != null && _walls[3] == null)
+            return _modules[3];
 
         return null;
     }
 
-    public void AddWall(Wall top, Wall left, Wall right, Wall down)
+    public void AddWall(Wall[] walls)
     {
-        if (top != null)
-            _topWall = top;
-        if (left != null)
-            _leftWall = left;
-        if (right != null)
-            _rightWall = right;
-        if (down != null)
-            _downWall = down;
+        for (int i = 0; i < _walls.Count; i++)
+        {
+            if (walls[i] != null)
+                _walls[i] = walls[i];
+        }
     }
 
     public void ResetWall()
     {
-        _topWall = null;
-        _leftWall = null;
-        _rightWall = null;
-        _downWall = null;
+        for (int i = 0; i < _walls.Count; i++)
+        {
+            _walls[i] = null;
+        }
     }
 
     public void Magnet(Vector2 imgSize)
     {
-        if (_topModule != null && !_topModule.IsTreated)
+        for (int i = 0; i < _modules.Count; i++)
         {
-            _topModule.IsTreated = true;
-            var pos = gameObject.transform.localPosition;
-            _topModule.gameObject.transform.localPosition = new Vector3(pos.x, pos.y + imgSize.y, 0);
-            _topModule.Magnet(imgSize);
-        }
-        
-        if (_downModule != null && !_downModule.IsTreated)
-        {
-            _downModule.IsTreated = true;
-            var pos = gameObject.transform.localPosition;
-            _downModule.gameObject.transform.localPosition = new Vector3(pos.x, pos.y - imgSize.y, 0);
-            _downModule.Magnet(imgSize);
-        }
-        
-        if (_rightModule != null && !_rightModule.IsTreated)
-        {
-            _rightModule.IsTreated = true;
-            var pos = gameObject.transform.localPosition;
-            _rightModule.gameObject.transform.localPosition = new Vector3(pos.x + imgSize.x, pos.y, 0);
-            _rightModule.Magnet(imgSize);
-        }
-        
-        if (_leftModule != null && !_leftModule.IsTreated)
-        {
-            _leftModule.IsTreated = true;
-            var pos = gameObject.transform.localPosition;
-            _leftModule.gameObject.transform.localPosition = new Vector3(pos.x - imgSize.x, pos.y, 0);
-            _leftModule.Magnet(imgSize);
+            if (_modules[i] != null && !_modules[i].IsTreated)
+            {
+                _modules[i].IsTreated = true;
+                var pos = gameObject.transform.localPosition;
+                var newPos = Vector3.zero;
+                
+                switch (i)
+                {
+                    case 0:
+                        newPos = new Vector3(pos.x, pos.y + imgSize.y, 0);
+                        break;
+                    case 1:
+                        newPos = new Vector3(pos.x - imgSize.x, pos.y, 0);
+                        break;
+                    case 2:
+                        newPos = new Vector3(pos.x + imgSize.x, pos.y, 0);
+                        break;
+                    case 3:
+                        newPos = new Vector3(pos.x, pos.y - imgSize.y, 0);
+                        break;
+                }
+
+                _modules[i].gameObject.transform.localPosition = newPos;
+                _modules[i].Magnet(imgSize);
+            }
         }
     }
 
@@ -118,11 +122,6 @@ public class Module : MonoBehaviour
             return false;
         
         return true;
-    }
-
-    private void OnDisable()
-    {
-        // PlayerManager.Instance.PlayerHasSwipe -= CheckDeathModule;
     }
 
     private void OnDrawGizmosSelected()

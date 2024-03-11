@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class ShakeObj : MonoBehaviour
+public class Shaker : MonoBehaviour
 {
     [SerializeField] private AnimationCurve _curve;
     [SerializeField] private float _durationShaking = 0f;
 
-    public static ShakeObj Instance;
+    public static Shaker Instance;
 
     private void Awake()
     {
