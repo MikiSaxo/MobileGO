@@ -29,6 +29,16 @@ public class Door : Wall
         _doorImg.gameObject.transform.DOComplete();
         _doorImg.gameObject.transform.DOScale(Vector3.one * .5f, .5f);
     }
+
+    public void CloseDoor()
+    {
+        PlayerManager.Instance.PlayerHasSwipe += SetWallToModule;
+        
+        SetWallToModule();
+
+        _doorImg.gameObject.transform.DOComplete();
+        _doorImg.gameObject.transform.DOScale(Vector3.one, .5f);
+    }
     
     private void OnDisable()
     {

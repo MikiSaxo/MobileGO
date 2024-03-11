@@ -86,6 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7929413063055862025}
   - component: {fileID: 3717844257800155121}
+  - component: {fileID: 2021159941135956097}
   m_Layer: 5
   m_Name: WeakGround
   m_TagString: Untagged
@@ -100,7 +101,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8702934159956417502}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -126,9 +127,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d789ebfb32da14ca31dbfd48b77c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundImg: {fileID: 2033082761513310874}
+  _brokenGround: {fileID: 21300000, guid: 423ebd87a48f21147ada298699071390, type: 3}
+--- !u!114 &2021159941135956097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8702934159956417502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87504ac00ebd4a4f9f091e389e36bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsBlockedModule>k__BackingField: 0
   _topModule: {fileID: 0}
   _leftModule: {fileID: 0}
   _rightModule: {fileID: 0}
   _downModule: {fileID: 0}
-  _groundImg: {fileID: 2033082761513310874}
-  _brokenGround: {fileID: 21300000, guid: 423ebd87a48f21147ada298699071390, type: 3}

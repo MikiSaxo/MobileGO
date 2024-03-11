@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4815616330937852542}
   - component: {fileID: 1920417925550276200}
+  - component: {fileID: 7914942743002698777}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -24,7 +25,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720555609874075896}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -50,6 +51,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee68fd4ef95981544874a2b538efcabe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _imgSprite: {fileID: 2034794470573592607}
+--- !u!114 &7914942743002698777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720555609874075896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87504ac00ebd4a4f9f091e389e36bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsBlockedModule>k__BackingField: 0
   _topModule: {fileID: 0}
   _leftModule: {fileID: 0}
   _rightModule: {fileID: 0}

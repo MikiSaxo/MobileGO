@@ -1,7 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class StartPoint : Module
+public class StartPoint : ModuleFeature
 {
+    [Header("--- StartPoint ---")]
+    [SerializeField] private Image _imgSprite;
+    
+    private Vector2 _imgSize;
+    private Module _module;
+
+    protected override void Start()
+    {
+        var imgRect = _imgSprite.rectTransform.rect;
+        _imgSize = new Vector2(imgRect.width, imgRect.height);
+
+        _module = gameObject.GetComponent<Module>();
+        _module.Magnet(_imgSize);
+        // print($"----> {new Vector3(pos.x, pos.y + imgSize.y, 0)}");
+    }
 }

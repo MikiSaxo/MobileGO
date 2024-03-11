@@ -10,15 +10,23 @@ public class Wall : MonoBehaviour
     [SerializeField] private WallInfos[] _wallInfos;
 
     private int _count = 0;
+    private int _startCount = 0;
 
     private void Start()
     {
         PlayerManager.Instance.PlayerHasSwipe += ChangePos;
+        PlayerManager.Instance.PlayerIsDead += ResetStartPos;
 
-        if(_startNextState)
+        if (_startNextState)
+        {
             ChangePos();
+            _startCount = 0;
+        }
         else
+        {
             SetWallToModule();
+            _startCount = _wallInfos.Length-1;
+        }
     }
 
     private void ChangePos()
@@ -42,6 +50,7 @@ public class Wall : MonoBehaviour
         {
             gameObject.transform.DOScale(Vector3.one * .5f, .5f).SetEase(Ease.OutBounce);
         }
+
         SetWallToModule();
     }
 
@@ -83,6 +92,12 @@ public class Wall : MonoBehaviour
             downMod.ResetWall();
     }
 
+    private void ResetStartPos()
+    {
+        _count = _startCount;
+        ChangePos();
+    }
+
     private void OnDrawGizmosSelected()
     {
         foreach (var wall in _wallInfos)
@@ -111,5 +126,6 @@ public class Wall : MonoBehaviour
     private void OnDisable()
     {
         PlayerManager.Instance.PlayerHasSwipe -= ChangePos;
+        PlayerManager.Instance.PlayerIsDead -= ResetStartPos;
     }
 }

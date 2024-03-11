@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class Module : MonoBehaviour
 {
+    [field:SerializeField] public bool IsBlockedModule { get; set; }
+    
     [Header("----- Modules -----")]
-    [SerializeField] private Module _topModule;
-    [SerializeField] private Module _leftModule;
-    [SerializeField] private Module _rightModule;
-    [SerializeField] private Module _downModule;
+    [SerializeField] protected Module _topModule;
+    [SerializeField] protected Module _leftModule;
+    [SerializeField] protected Module _rightModule;
+    [SerializeField] protected Module _downModule;
 
     private Wall _topWall { get; set; }
     private Wall _leftWall { get; set; }
@@ -19,9 +21,14 @@ public class Module : MonoBehaviour
     public bool IsDeathModule { get; set; }
 
     
+    public bool IsTreated { get; set; }
+
+    private ModuleFeature _moduleFeature;
+
     private void Start()
     {
-        // PlayerManager.Instance.PlayerHasSwipe += CheckDeathModule;
+        if(GetComponent<ModuleFeature>() != null)
+            _moduleFeature = GetComponent<ModuleFeature>();
     }
 
     public Module GetModuleNeighbor(Directions dir)
@@ -58,19 +65,58 @@ public class Module : MonoBehaviour
         _downWall = null;
     }
 
-    // private void CheckDeathModule()
-    // {
-    //     
-    // }
+    public void Magnet(Vector2 imgSize)
+    {
+        if (_topModule != null && !_topModule.IsTreated)
+        {
+            _topModule.IsTreated = true;
+            var pos = gameObject.transform.localPosition;
+            _topModule.gameObject.transform.localPosition = new Vector3(pos.x, pos.y + imgSize.y, 0);
+            _topModule.Magnet(imgSize);
+        }
+        
+        if (_downModule != null && !_downModule.IsTreated)
+        {
+            _downModule.IsTreated = true;
+            var pos = gameObject.transform.localPosition;
+            _downModule.gameObject.transform.localPosition = new Vector3(pos.x, pos.y - imgSize.y, 0);
+            _downModule.Magnet(imgSize);
+        }
+        
+        if (_rightModule != null && !_rightModule.IsTreated)
+        {
+            _rightModule.IsTreated = true;
+            var pos = gameObject.transform.localPosition;
+            _rightModule.gameObject.transform.localPosition = new Vector3(pos.x + imgSize.x, pos.y, 0);
+            _rightModule.Magnet(imgSize);
+        }
+        
+        if (_leftModule != null && !_leftModule.IsTreated)
+        {
+            _leftModule.IsTreated = true;
+            var pos = gameObject.transform.localPosition;
+            _leftModule.gameObject.transform.localPosition = new Vector3(pos.x - imgSize.x, pos.y, 0);
+            _leftModule.Magnet(imgSize);
+        }
+    }
 
 
     public virtual void OnPlayerEnter()
     {
-        
+        if(_moduleFeature != null)
+            _moduleFeature.OnPlayerEnter();
+    }
+    public virtual void OnPlayerLeave()
+    {
+        if(_moduleFeature != null)
+            _moduleFeature.OnPlayerLeave();
     }
 
     public virtual bool CanMove()
     {
+        if (IsBlockedModule)
+            return false;
+        
         return true;
     }
 

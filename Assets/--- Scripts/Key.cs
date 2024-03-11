@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Key : Module
+public class Key : ModuleFeature
 {
     [Header("--- Key ---")] 
     [SerializeField] private Image _keyImg;
@@ -12,8 +13,8 @@ public class Key : Module
 
 
     private bool _hasGetKey;
-    
-    public void GetKey()
+
+    private void GetKey()
     {
         if(_hasGetKey) return;
         
@@ -25,5 +26,17 @@ public class Key : Module
     public override void OnPlayerEnter()
     {
         GetKey();
+    }
+
+    protected override void ResetStartPos()
+    {
+        _hasGetKey = false;
+        _keyImg.DOFade(1, .5f);
+        _door.CloseDoor();
+    }
+    
+    private void OnDisable()
+    {
+        PlayerManager.Instance.PlayerIsDead -= ResetStartPos;
     }
 }

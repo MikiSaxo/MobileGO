@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance;
 
     public event Action PlayerHasSwipe;
+    public event Action PlayerIsDead;
     
     [SerializeField] private Module _currentModule;
     [SerializeField] private float _timeToMove = .5f;
@@ -25,23 +26,25 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         _startModule = _currentModule;
+        gameObject.transform.DOMove(_currentModule.gameObject.transform.position, 0);
     }
 
     public void WantToSwipe(Directions dir)
     {
         if (_isDead) return;
 
+        _currentModule.OnPlayerLeave();
+
         var mod = _currentModule.GetModuleNeighbor(dir);
 
         if (CheckIfCanSwipe(mod) == false) return;
-    
-        mod.OnPlayerEnter();
-
-
+        
         _currentModule = mod;
         gameObject.transform.DOComplete();
         gameObject.transform.DOMove(_currentModule.gameObject.transform.position, _timeToMove);
+        
         PlayerHasSwipe?.Invoke();
+        mod.OnPlayerEnter();
         
         if (_isEnd) StartCoroutine(WaitToGoNextStation(_startModule));
         
@@ -74,19 +77,27 @@ public class PlayerManager : MonoBehaviour
         _isEnd = false;
     }
 
-
-    private void CheckIsDead()
+    public void CheckIsDead()
     {
         if(_currentModule.IsDeathModule)
             StartCoroutine(GoDeath());
+    }
+
+    public void KillPlayer()
+    {
+        StartCoroutine(GoDeath());
     }
 
     IEnumerator GoDeath()
     {
         _isDead = true;
         
+        // yield return new WaitForSeconds(_timeToMove*.5f);
+        
+
         yield return new WaitForSeconds(_timeToMove);
         
+        PlayerIsDead?.Invoke();
         gameObject.transform.DOMove(_startModule.gameObject.transform.position, 0f);
         _currentModule = _startModule;
         _isDead = false;

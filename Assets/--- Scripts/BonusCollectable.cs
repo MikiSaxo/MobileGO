@@ -4,14 +4,16 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BonusCollectable : Module
+public class BonusCollectable : ModuleFeature
 {
     [Header("--- Bonus ---")] 
     [SerializeField] private Image _bonusImg;
 
     private bool _hasGetBonus;
+
     
-    public void GetBonus()
+    
+    private void GetBonus()
     {
         if (_hasGetBonus) return;
         
@@ -23,5 +25,13 @@ public class BonusCollectable : Module
     public override void OnPlayerEnter()
     {
         GetBonus();
+    }
+
+    protected override void ResetStartPos()
+    {
+        if(_hasGetBonus)
+            UIManager.Instance.UpdateNbBonus(-1);
+        _hasGetBonus = false;
+        _bonusImg.DOFade(1, .5f);
     }
 }

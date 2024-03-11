@@ -14,6 +14,13 @@ public class Laser : MonoBehaviour
     private void Start()
     {
         PlayerManager.Instance.PlayerHasSwipe += ChangeState;
+        PlayerManager.Instance.PlayerIsDead += ResetStartPos;
+    }
+
+    private void ResetStartPos()
+    {
+        _count = _differentHeightLaser.Length;
+        ChangeState();
     }
 
     private void ChangeState()
@@ -58,5 +65,6 @@ public class Laser : MonoBehaviour
     private void OnDisable()
     {
         PlayerManager.Instance.PlayerHasSwipe -= ChangeState;
+        PlayerManager.Instance.PlayerIsDead += ResetStartPos;
     }
 }

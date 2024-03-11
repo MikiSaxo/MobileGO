@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     {
         _bonusCount += add;
         _bonusTxt.text = $"{_bonusCount}";
-        _bonusTxt.gameObject.transform.DOPunchScale(Vector3.one, .5f);
+        if(add > 0)
+            _bonusTxt.gameObject.transform.DOPunchScale(Vector3.one, .5f);
     }
 }
