@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Wall : MonoBehaviour
 {
     [SerializeField] private bool _startNextState;
+    [SerializeField] private Image _wallImage;
+    [SerializeField] private Sprite[] _wallInPlaceSprites;
     [SerializeField] private WallInfos[] _wallInfos;
 
     private int _count = 0;
@@ -33,7 +36,7 @@ public class Wall : MonoBehaviour
         if (_count >= _wallInfos.Length)
             _count = 0;
 
-        Move();
+        Move(); 
 
         SetWallToModule();
     }
@@ -45,11 +48,21 @@ public class Wall : MonoBehaviour
         {
             gameObject.transform.DOMove(_wallInfos[_count].NewPos.position, .5f);
             gameObject.transform.DOScale(Vector3.one, .5f).SetEase(Ease.OutBounce);
+
+            if(_wallImage != null && _wallInPlaceSprites.Length > 0)
+                _wallImage.sprite = _wallInPlaceSprites[0];
         }
         else
         {
-            gameObject.transform.DOScale(Vector3.one * .5f, .5f).SetEase(Ease.OutBounce);
+            //gameObject.transform.DOScale(Vector3.one * .5f, .5f).SetEase(Ease.OutBounce);
+            if(_wallImage != null && _wallInPlaceSprites.Length > 0)
+                _wallImage.sprite = _wallInPlaceSprites[1];
         }
+    }
+
+    private void ChangeSprite()
+    {
+        
     }
 
     protected void SetWallToModule()

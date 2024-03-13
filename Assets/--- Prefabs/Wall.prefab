@@ -51,6 +51,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startNextState: 0
+  _isInPlace: 0
+  _wallImage: {fileID: 6675613233014732148}
+  _wallInPlaceSprites: []
   _wallInfos:
   - ModuleAtTop: {fileID: 0}
     ModuleAtLeft: {fileID: 0}
