@@ -79,23 +79,27 @@ public class PlayerManager : MonoBehaviour
     public void CheckIsDead()
     {
         if(_currentModule.IsDeathModule)
-            StartCoroutine(GoDeath());
+            StartCoroutine(WaitGoDeath());
     }
 
     public void KillPlayer()
     {
-        StartCoroutine(GoDeath());
+        StartCoroutine(WaitGoDeath());
     }
 
-    IEnumerator GoDeath()
+    IEnumerator WaitGoDeath()
     {
         _isDead = true;
         
-        // yield return new WaitForSeconds(_timeToMove*.5f);
-        
-
         yield return new WaitForSeconds(_timeToMove);
         
+        GoDeath();
+    }
+
+    public void GoDeath()
+    {
+        _isDead = true;
+
         PlayerIsDead?.Invoke();
         gameObject.transform.DOMove(_startModule.gameObject.transform.position, 0f);
         _currentModule = _startModule;
