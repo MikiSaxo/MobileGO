@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class UIManager : MonoBehaviour
     public event Action GoMagnetWalls;
 
     [SerializeField] private TMP_Text _bonusTxt;
+    [Header("--- Fade ---")]
+    [SerializeField] private Image _fade;
+    [SerializeField] private float _timeFadeOut = .5f;
 
     private int _bonusCount = 0;
 
@@ -25,6 +29,7 @@ public class UIManager : MonoBehaviour
     {
         _bonusTxt.text = $"{_bonusCount}";
         StartCoroutine(WaitMagnet());
+        _fade.DOFade(0, _timeFadeOut);
     }
 
     IEnumerator WaitMagnet()
