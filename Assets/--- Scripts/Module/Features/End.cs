@@ -9,7 +9,6 @@ public class End : ModuleFeature
     
     public override void OnPlayerEnter()
     {
-        PlayerManager.Instance.GoStartPoint(_nextStartPoint);
-        print("end");
+        MapManager.Instance.ChangeLevel(_nextStartPoint);
     }
 }

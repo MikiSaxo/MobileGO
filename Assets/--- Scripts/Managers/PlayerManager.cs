@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     private Module _startModule;
     private bool _isDead;
     private bool _isEnd;
+    public bool CanMove { get; set; }
 
     private void Awake()
     {
@@ -25,12 +26,17 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         _startModule = _currentModule;
-        gameObject.transform.DOMove(_currentModule.gameObject.transform.position, 0);
+        CanMove = true;
+    }
+
+    public void GoStartPos()
+    {
+        gameObject.transform.position = _currentModule.gameObject.transform.position;
     }
 
     public void WantToSwipe(Directions dir)
     {
-        if (_isDead) return;
+        if (_isDead || CanMove == false) return;
 
         _currentModule.OnPlayerLeave();
 
@@ -57,14 +63,18 @@ public class PlayerManager : MonoBehaviour
         return mod.CanMove();
     }
 
-    public void GoStartPoint(Module mod)
+    public void GoNextStartPoint(Module mod)
     {
         _isEnd = true;
         _startModule = mod;
+        
+        StartCoroutine(WaitToGoNextStation(_startModule));
     }
 
     IEnumerator WaitToGoNextStation(Module mod)
     {
+        CanMove = false;
+
         yield return new WaitForSeconds(_timeToMove);
         
         _currentModule = mod;
@@ -74,6 +84,7 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(_timeToMove);
         
         _isEnd = false;
+        CanMove = true;
     }
 
     public void CheckIsDead()
