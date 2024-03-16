@@ -8,8 +8,10 @@ using UnityEngine.UI;
 public class Wall : MonoBehaviour
 {
     [SerializeField] private bool _startNextState;
+    [Header("--- Stay In Place ---")]
     [SerializeField] private Image _wallImage;
     [SerializeField] private Sprite[] _wallInPlaceSprites;
+    [Header("--- Walls Infos --- ")]
     [SerializeField] private WallInfos[] _wallInfos;
 
     private int _count = 0;

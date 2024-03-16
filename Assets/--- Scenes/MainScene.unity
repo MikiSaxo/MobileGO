@@ -4946,7 +4946,7 @@ GameObject:
   - component: {fileID: 1267944180}
   - component: {fileID: 1267944181}
   m_Layer: 5
-  m_Name: ------ Map
+  m_Name: ------ MapManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9422,6 +9422,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4224107813718250751, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
+      propertyPath: _leftModule
+      value: 
+      objectReference: {fileID: 769505348}
     - target: {fileID: 5129428141060615218, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: m_Name
       value: Laser
