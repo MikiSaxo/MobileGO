@@ -8,8 +8,8 @@ public class Laser : MonoBehaviour
 {
     [SerializeField] private Module[] _modulesToLaser;
     
-    [SerializeField] private Image _laserImg;
-    [SerializeField] private Image _laserModuleImg;
+    [SerializeField] private SpriteRenderer _laserModuleImg;
+    [SerializeField] private SpriteRenderer _laserRayImg;
     
     [SerializeField] private Sprite[] _spritesLaser;
     [SerializeField] private Sprite[] _spritesLaserModule;
@@ -43,8 +43,8 @@ public class Laser : MonoBehaviour
             }
         }
 
-        _laserImg.sprite = _spritesLaser[_count];
-        _laserImg.transform.DOScale(_spritesLaser[_count] == null ? 0 : 1, 0);
+        _laserRayImg.sprite = _spritesLaser[_count];
+        _laserRayImg.transform.DOScale(_spritesLaser[_count] == null ? 0 : 1, 0);
         _laserModuleImg.sprite = _spritesLaserModule[_count];
 
         if (_count == _spritesLaser.Length - 1)

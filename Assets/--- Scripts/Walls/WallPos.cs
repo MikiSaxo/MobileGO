@@ -11,6 +11,7 @@ public class WallPos : MonoBehaviour
     public Module ModuleAtRight;
     public Module ModuleAtDown;
 
+    private const float HalfSizeSprite = .15f;
     private void Start()
     {
         UIManager.Instance.GoMagnetWalls += GoMagnet;
@@ -21,25 +22,25 @@ public class WallPos : MonoBehaviour
         if (ModuleAtTop != null)
         {
             var localPosition = ModuleAtTop.gameObject.transform.localPosition;
-            gameObject.transform.localPosition = new Vector3(localPosition.x, localPosition.y - 50, 0);
+            gameObject.transform.localPosition = new Vector3(localPosition.x, localPosition.y - HalfSizeSprite, 0);
         }
         
         if (ModuleAtLeft != null)
         {
             var localPosition = ModuleAtLeft.gameObject.transform.localPosition;
-            gameObject.transform.localPosition = new Vector3(localPosition.x - 50, localPosition.y, 0);
+            gameObject.transform.localPosition = new Vector3(localPosition.x - HalfSizeSprite, localPosition.y, 0);
         }
         
         if (ModuleAtRight != null)
         {
             var localPosition = ModuleAtRight.gameObject.transform.localPosition;
-            gameObject.transform.localPosition = new Vector3(localPosition.x + 50, localPosition.y, 0);
+            gameObject.transform.localPosition = new Vector3(localPosition.x + HalfSizeSprite, localPosition.y, 0);
         }
         
         if (ModuleAtDown != null)
         {
             var localPosition = ModuleAtDown.gameObject.transform.localPosition;
-            gameObject.transform.localPosition = new Vector3(localPosition.x, localPosition.y + 50, 0);
+            gameObject.transform.localPosition = new Vector3(localPosition.x, localPosition.y + HalfSizeSprite, 0);
         }
     }
     

@@ -112,8 +112,10 @@ public class PlayerManager : MonoBehaviour
         _isDead = true;
 
         PlayerIsDead?.Invoke();
-        gameObject.transform.DOMove(_startModule.gameObject.transform.position, 0f);
+        gameObject.transform.position = _startModule.gameObject.transform.position;
         _currentModule = _startModule;
+        UIManager.Instance.GetHit();
+        
         _isDead = false;
     }
 }

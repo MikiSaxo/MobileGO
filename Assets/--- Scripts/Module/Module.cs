@@ -16,7 +16,7 @@ public class Module : MonoBehaviour
     [SerializeField] protected Module _downModule;
     
     [Header("----- Sprites -----")]
-    [SerializeField] protected Image _imgMod;
+    [SerializeField] protected SpriteRenderer _spriteMod;
     [SerializeField] protected Sprite[] _spritesMod;
 
     public bool IsDeathModule { get; set; }
@@ -47,8 +47,8 @@ public class Module : MonoBehaviour
             _moduleFeature = GetComponent<ModuleFeature>();
         
         int randomNum = Random.Range(0, _spritesMod.Length);
-        if(_imgMod != null)
-            _imgMod.sprite = _spritesMod[randomNum];
+        if(_spriteMod != null)
+            _spriteMod.sprite = _spritesMod[randomNum];
     }
 
     public Module GetModuleNeighbor(Directions dir)

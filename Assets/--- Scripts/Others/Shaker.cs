@@ -20,17 +20,17 @@ public class Shaker : MonoBehaviour
         PlayerManager.Instance.PlayerHasSwipe += GoShake;
     }
 
-    public void StartShakingObj(float addTime)
+    public void GoShakeAddPower(float addTime, float strengthAdded)
     {
-        StartCoroutine(Shaking(addTime));
+        StartCoroutine(Shaking(addTime, strengthAdded));
     }
 
     private void GoShake()
     {
-        StartCoroutine(Shaking(0));
+        StartCoroutine(Shaking(0,1));
     }
 
-    private IEnumerator Shaking(float timeAdded)
+    private IEnumerator Shaking(float timeAdded, float strengthAdded)
     {
         Vector3 startPosition = transform.position;
         float elapsedTime = 0f;
@@ -40,7 +40,7 @@ public class Shaker : MonoBehaviour
         while (elapsedTime < _addDuration)
         {
             elapsedTime += Time.deltaTime;
-            float strength = _curve.Evaluate(elapsedTime / _addDuration);
+            float strength = _curve.Evaluate(elapsedTime / _addDuration) * strengthAdded;
             transform.position = startPosition + Random.insideUnitSphere * strength;
             yield return null;
         }

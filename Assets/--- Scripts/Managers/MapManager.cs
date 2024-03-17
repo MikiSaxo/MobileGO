@@ -31,6 +31,7 @@ public class MapManager : MonoBehaviour
         for (int i = 1; i < _allLevels.Length; i++)
         {
             _allLevels[i].transform.position = _levelPoints[2].position;
+            _allLevels[i].SetActive(false);
         }
         _allLevels[0].transform.position = _levelPoints[1].position;
         
@@ -41,7 +42,6 @@ public class MapManager : MonoBehaviour
     {
         _nextStartPoint = nextStartPoint;
         
-        
         _currentLevel++;
 
         if (_currentLevel == _allLevels.Length)
@@ -50,6 +50,7 @@ public class MapManager : MonoBehaviour
             return;
         }
 
+        _allLevels[_currentLevel].SetActive(true);
         PlayerManager.Instance.CanMove = false;
         
         _allLevels[_currentLevel - 1].transform.DOMove(_levelPoints[0].position, _timeToExitLevel).SetEase(Ease.InExpo);
@@ -66,6 +67,7 @@ public class MapManager : MonoBehaviour
     private void TpPlayer()
     {
         PlayerManager.Instance.GoNextStartPoint(_nextStartPoint);
+        _allLevels[_currentLevel-1].SetActive(false);
     }
 
     private void Update()

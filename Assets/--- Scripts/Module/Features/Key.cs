@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Key : ModuleFeature
 {
     [Header("--- Key ---")] 
-    [SerializeField] private Image _keyImg;
+    [SerializeField] private SpriteRenderer _spriteKey;
     [SerializeField] private Door _door;
 
 
@@ -19,7 +19,7 @@ public class Key : ModuleFeature
         if(_hasGetKey) return;
         
         _hasGetKey = true;
-        _keyImg.DOFade(0, 1f);
+        _spriteKey.DOFade(0, 1f);
         _door.OpenDoor();
     }
 
@@ -31,7 +31,7 @@ public class Key : ModuleFeature
     protected override void ResetStartPos()
     {
         _hasGetKey = false;
-        _keyImg.DOFade(1, .5f);
+        _spriteKey.DOFade(1, .5f);
         _door.CloseDoor();
     }
     

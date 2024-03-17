@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class BrokenGround : ModuleFeature
 {
     [Header("--- Broken Ground ---")]
-    [SerializeField] private Image _groundImg;
+    [SerializeField] private SpriteRenderer _spriteGround;
     [SerializeField] private Sprite _brokenGround;
 
     private Sprite _notBrokenGround;
@@ -20,13 +20,13 @@ public class BrokenGround : ModuleFeature
     {
         base.Start();
         
-        _notBrokenGround = _groundImg.sprite;
+        _notBrokenGround = _spriteGround.sprite;
         _module = gameObject.GetComponent<Module>();
     }
     
     private void GoBroken()
     {
-        _groundImg.sprite = _brokenGround;
+        _spriteGround.sprite = _brokenGround;
         IsBrokenModule = true;
         _module.IsBlockedModule = true;
     }
@@ -39,6 +39,6 @@ public class BrokenGround : ModuleFeature
     protected override void ResetStartPos()
     {
         IsBrokenModule = false;
-        _groundImg.sprite = _notBrokenGround;
+        _spriteGround.sprite = _notBrokenGround;
     }
 }

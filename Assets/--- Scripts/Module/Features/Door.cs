@@ -9,14 +9,16 @@ using UnityEngine.UI;
 public class Door : Wall
 {
     [Header("--- Door ---")] 
-    [SerializeField] private Image _doorImg;
+    [SerializeField] private SpriteRenderer _spriteDoor;
 
+    private Vector3 _startSize;
 
 
     private void Start()
     {
         PlayerManager.Instance.PlayerHasSwipe += SetWallToModule;
 
+        _startSize = _spriteDoor.gameObject.transform.localScale;
         SetWallToModule();
     }
 
@@ -26,8 +28,8 @@ public class Door : Wall
         
         ResetOldWall();
 
-        _doorImg.gameObject.transform.DOComplete();
-        _doorImg.gameObject.transform.DOScale(Vector3.one * .5f, .5f);
+        _spriteDoor.gameObject.transform.DOComplete();
+        _spriteDoor.gameObject.transform.DOScale(Vector3.zero, .5f);
     }
 
     public void CloseDoor()
@@ -36,8 +38,8 @@ public class Door : Wall
 
         SetWallToModule();
 
-        _doorImg.gameObject.transform.DOComplete();
-        _doorImg.gameObject.transform.DOScale(Vector3.one, .5f);
+        _spriteDoor.gameObject.transform.DOComplete();
+        _spriteDoor.gameObject.transform.DOScale(_startSize, .5f);
     }
     
     private void OnDisable()

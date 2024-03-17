@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class StartPoint : ModuleFeature
 {
     [Header("--- StartPoint ---")]
-    [SerializeField] private Image _imgSprite;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     
     private Vector2 _imgSize;
     private Module _module;
@@ -16,8 +16,8 @@ public class StartPoint : ModuleFeature
     {
         UIManager.Instance.GoMagnetModules += GoMagnetModules;
         
-        var imgRect = _imgSprite.rectTransform.rect;
-        _imgSize = new Vector2(imgRect.width, imgRect.height);
+        var imgRect = _spriteRenderer.size;
+        _imgSize = new Vector2(imgRect.x, imgRect.y);
 
        
         // print($"----> {new Vector3(pos.x, pos.y + imgSize.y, 0)}");

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Spike : ModuleFeature
 {
     [Header("--- Spike ---")]
-    [SerializeField] private Image _spikeImg;
+    [SerializeField] private SpriteRenderer _spriteSpike;
     [SerializeField] private bool _isSpikeAtStart;
     [SerializeField] private Sprite[] _sprites;
 
@@ -46,7 +46,7 @@ public class Spike : ModuleFeature
             // _spikeImg.gameObject.transform.DOScale(Vector3.one*.5f, .5f);
         }
         
-        _spikeImg.sprite = _sprites[_count];
+        _spriteSpike.sprite = _sprites[_count];
     }
     
     public override void OnPlayerEnter()

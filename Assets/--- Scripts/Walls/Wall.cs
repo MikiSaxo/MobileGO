@@ -9,7 +9,7 @@ public class Wall : MonoBehaviour
 {
     [SerializeField] private bool _startNextState;
     [Header("--- Stay In Place ---")]
-    [SerializeField] private Image _wallImage;
+    [SerializeField] private SpriteRenderer _spriteWallInPlace;
     [SerializeField] private Sprite[] _wallInPlaceSprites;
     [Header("--- Walls Infos --- ")]
     [SerializeField] private WallInfos[] _wallInfos;
@@ -51,14 +51,14 @@ public class Wall : MonoBehaviour
             gameObject.transform.DOMove(_wallInfos[_count].NewPos.position, .5f);
             gameObject.transform.DOScale(Vector3.one, .5f).SetEase(Ease.OutBounce);
 
-            if(_wallImage != null && _wallInPlaceSprites.Length > 0)
-                _wallImage.sprite = _wallInPlaceSprites[0];
+            if(_spriteWallInPlace != null && _wallInPlaceSprites.Length > 0)
+                _spriteWallInPlace.sprite = _wallInPlaceSprites[0];
         }
         else
         {
             //gameObject.transform.DOScale(Vector3.one * .5f, .5f).SetEase(Ease.OutBounce);
-            if(_wallImage != null && _wallInPlaceSprites.Length > 0)
-                _wallImage.sprite = _wallInPlaceSprites[1];
+            if(_spriteWallInPlace != null && _wallInPlaceSprites.Length > 0)
+                _spriteWallInPlace.sprite = _wallInPlaceSprites[1];
         }
     }
 
