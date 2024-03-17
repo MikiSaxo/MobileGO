@@ -28,11 +28,11 @@ public class MapManager : MonoBehaviour
 
     private void SetPosAllLevels()
     {
-        for (int i = 1; i < _allLevels.Length; i++)
-        {
-            _allLevels[i].transform.position = _levelPoints[2].position;
-            _allLevels[i].SetActive(false);
-        }
+        // for (int i = 1; i < _allLevels.Length; i++)
+        // {
+        //     _allLevels[i].transform.position = _levelPoints[2].position;
+        //     _allLevels[i].SetActive(false);
+        // }
         _allLevels[0].transform.position = _levelPoints[1].position;
         
         PlayerManager.Instance.GoStartPos();
@@ -50,10 +50,13 @@ public class MapManager : MonoBehaviour
             return;
         }
 
-        _allLevels[_currentLevel].SetActive(true);
+        GameObject newLvl = Instantiate(_allLevels[_currentLevel], _levelPoints[0].position, Quaternion.identity);
+        //_allLevels[_currentLevel].SetActive(true);
         PlayerManager.Instance.CanMove = false;
+
+        _allLevels[_currentLevel] = newLvl;
         
-        _allLevels[_currentLevel - 1].transform.DOMove(_levelPoints[0].position, _timeToExitLevel).SetEase(Ease.InExpo);
+        _allLevels[_currentLevel - 1].transform.DOMove(_levelPoints[2].position, _timeToExitLevel).SetEase(Ease.InExpo);
 
         if(_nextStartPoint != null)
             _allLevels[_currentLevel].transform.DOMove(_levelPoints[1].position, _timeToEnterLevel).SetEase(Ease.InExpo).OnComplete(TpPlayer);

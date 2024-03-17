@@ -19,6 +19,7 @@ public class Wall : MonoBehaviour
 
     protected bool _isBlocked = false;
 
+
     private void Start()
     {
         PlayerManager.Instance.PlayerHasSwipe += ChangePos;
