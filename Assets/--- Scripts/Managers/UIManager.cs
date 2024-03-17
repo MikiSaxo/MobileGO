@@ -44,14 +44,20 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         _bonusTxt.text = $"{_bonusCount}";
-        StartCoroutine(WaitMagnet());
+        GoMagnet();
         _fade.DOFade(0, _timeFadeOut);
         _bonusTxt.DOFade(1, _timeFadeOut);
         _bonusImg.DOFade(1, _timeFadeOut);
     }
 
+    public void GoMagnet()
+    {
+        StartCoroutine(WaitMagnet());
+    }
+
     IEnumerator WaitMagnet()
     {
+        yield return new WaitForSeconds(.1f);
         GoMagnetModules?.Invoke();
         yield return new WaitForSeconds(.1f);
         GoMagnetWalls?.Invoke();

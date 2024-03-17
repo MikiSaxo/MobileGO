@@ -51,6 +51,8 @@ public class MapManager : MonoBehaviour
         }
 
         GameObject newLvl = Instantiate(_allLevels[_currentLevel], _levelPoints[0].position, Quaternion.identity);
+        _nextStartPoint = newLvl.GetComponent<Level>().StartModule;
+        UIManager.Instance.GoMagnet();
         //_allLevels[_currentLevel].SetActive(true);
         PlayerManager.Instance.CanMove = false;
 
