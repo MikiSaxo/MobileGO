@@ -150,7 +150,7 @@ MonoBehaviour:
     TimeBetweenFrames: 0.205
     SpriteSheet:
     - {fileID: 21300000, guid: 062ab06680fc3114b835cd457e6a2f1b, type: 3}
-    - {fileID: 1052997389, guid: 016e14bcce23ee445910871635c53471, type: 3}
+    - {fileID: 21300000, guid: 08c1193c57ccbf74f909220a498aef74, type: 3}
   _actionsList:
   - Name: GoUp
     TimeBetweenFrames: 0.07

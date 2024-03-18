@@ -92,6 +92,8 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(_timeGoMainScene-_timeDespawnWinText);
         
         _winText.DOFade(0, _timeDespawnWinText);
+        _bonusTxt.DOFade(0, _timeDespawnWinText);
+        _bonusImg.DOFade(0, _timeDespawnWinText);
         
         yield return new WaitForSeconds(_timeDespawnWinText);
         
