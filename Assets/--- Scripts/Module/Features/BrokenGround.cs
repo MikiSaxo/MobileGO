@@ -10,6 +10,8 @@ public class BrokenGround : ModuleFeature
     [Header("--- Broken Ground ---")]
     [SerializeField] private SpriteRenderer _spriteGround;
     [SerializeField] private Sprite _brokenGround;
+    [SerializeField] private GameObject _fxBrokenGround;
+    [SerializeField] private GameObject _fxWillBroke;
 
     private Sprite _notBrokenGround;
     private Module _module;
@@ -22,6 +24,7 @@ public class BrokenGround : ModuleFeature
         
         _notBrokenGround = _spriteGround.sprite;
         _module = gameObject.GetComponent<Module>();
+        Instantiate(_fxWillBroke, transform);
     }
     
     private void GoBroken()
@@ -29,6 +32,8 @@ public class BrokenGround : ModuleFeature
         _spriteGround.sprite = _brokenGround;
         IsBrokenModule = true;
         _module.IsBlockedModule = true;
+        Instantiate(_fxBrokenGround, transform.position, Quaternion.identity);
+        Destroy(_fxWillBroke);
     }
 
     public override void OnPlayerLeave()
