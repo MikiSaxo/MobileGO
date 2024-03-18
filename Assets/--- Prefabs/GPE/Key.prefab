@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8593825076924271331}
   - component: {fileID: 551906700019645332}
   - component: {fileID: 6847982399927500267}
+  - component: {fileID: 6175098371519920625}
   m_Layer: 5
   m_Name: Key
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteKey: {fileID: 2799387866503363210}
+  _fxEarnKey: {fileID: 7496241617873984113, guid: eebcca81c0b9b3d4fb6a74f63aac04f1, type: 3}
   _door: {fileID: 0}
 --- !u!114 &6847982399927500267
 MonoBehaviour:
@@ -77,6 +79,23 @@ MonoBehaviour:
   - {fileID: 1090716721, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
   - {fileID: -977407644, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
   - {fileID: -521278719, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+--- !u!114 &6175098371519920625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106204411341142843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3afb9c39fb5a86f4d8acd107cce6823a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationAngle: 17
+  rotationDuration: 0.12
+  rotationCount: 3
+  delayBetweenRotations: 2
+  _key: {fileID: 3865783490423427661}
 --- !u!1 &3865783490423427661
 GameObject:
   m_ObjectHideFlags: 0

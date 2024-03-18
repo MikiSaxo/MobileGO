@@ -8,6 +8,7 @@ public class BonusCollectable : ModuleFeature
 {
     [Header("--- Bonus ---")] 
     [SerializeField] private SpriteRenderer _spriteBonus;
+    [SerializeField] private GameObject _fxEarnCrown;
 
     private bool _hasGetBonus;
 
@@ -20,8 +21,9 @@ public class BonusCollectable : ModuleFeature
         _hasGetBonus = true;
         UIManager.Instance.UpdateNbBonus(1);
         _spriteBonus.DOFade(0, 1f);
+        Instantiate(_fxEarnCrown, transform.position, Quaternion.identity);
     }
-    
+
     public override void OnPlayerEnter()
     {
         GetBonus();

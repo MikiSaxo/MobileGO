@@ -9,6 +9,7 @@ public class Key : ModuleFeature
 {
     [Header("--- Key ---")] 
     [SerializeField] private SpriteRenderer _spriteKey;
+    [SerializeField] private GameObject _fxEarnKey;
     [SerializeField] private Door _door;
 
 
@@ -21,6 +22,7 @@ public class Key : ModuleFeature
         _hasGetKey = true;
         _spriteKey.DOFade(0, 1f);
         _door.OpenDoor();
+        Instantiate(_fxEarnKey, transform.position, Quaternion.identity);
     }
 
     public override void OnPlayerEnter()

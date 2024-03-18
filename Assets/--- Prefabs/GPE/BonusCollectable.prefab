@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteBonus: {fileID: 1956072927220889614}
+  _fxEarnCrown: {fileID: 7496241617873984113, guid: 89e391b8c95c4be4dbdaf3fd7d51fa86, type: 3}
 --- !u!114 &512215286456919571
 MonoBehaviour:
   m_ObjectHideFlags: 0

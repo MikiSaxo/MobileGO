@@ -31,7 +31,8 @@ public class PlayerManager : MonoBehaviour
 
     public void GoStartPos()
     {
-        gameObject.transform.position = _currentModule.gameObject.transform.position;
+        if(_currentModule != null)
+            gameObject.transform.position = _currentModule.gameObject.transform.position;
     }
 
     public void WantToSwipe(Directions dir)

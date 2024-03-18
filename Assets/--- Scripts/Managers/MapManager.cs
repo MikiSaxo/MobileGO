@@ -33,8 +33,15 @@ public class MapManager : MonoBehaviour
         //     _allLevels[i].transform.position = _levelPoints[2].position;
         //     _allLevels[i].SetActive(false);
         // }
-        _allLevels[0].transform.position = _levelPoints[1].position;
+        // _allLevels[0].transform.position = _levelPoints[1].position;
         
+        GameObject newLvl = Instantiate(_allLevels[_currentLevel], _levelPoints[0].position, Quaternion.identity);
+        _nextStartPoint = newLvl.GetComponent<Level>().StartModule;
+        UIManager.Instance.GoMagnet();
+        newLvl.transform.DOMove(_levelPoints[1].position, _timeToEnterLevel).SetEase(Ease.InExpo).OnComplete(TpPlayer);
+        _allLevels[_currentLevel] = newLvl;
+        
+
         PlayerManager.Instance.GoStartPos();
     }
 

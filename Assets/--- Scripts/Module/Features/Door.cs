@@ -10,6 +10,7 @@ public class Door : Wall
 {
     [Header("--- Door ---")] 
     [SerializeField] private SpriteRenderer _spriteDoor;
+    [SerializeField] private GameObject _fxOpenDoor;
 
     private Vector3 _startSize;
 
@@ -39,6 +40,7 @@ public class Door : Wall
 
         _spriteDoor.gameObject.transform.DOComplete();
         _spriteDoor.gameObject.transform.DOScale(Vector3.zero, .5f);
+        Instantiate(_fxOpenDoor, transform.position, Quaternion.identity);
     }
 
     public void CloseDoor()
