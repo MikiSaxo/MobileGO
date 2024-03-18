@@ -19,7 +19,16 @@ public class Door : Wall
         PlayerManager.Instance.PlayerHasSwipe += SetWallToModule;
 
         _startSize = _spriteDoor.gameObject.transform.localScale;
+        
         SetWallToModule();
+        StartCoroutine(WaitToTakePosition());
+    }
+
+    IEnumerator WaitToTakePosition()
+    {
+        yield return new WaitForSeconds(.15f);
+
+        gameObject.transform.DOMove(_wallInfos[0].NewPos.position, 0f);
     }
 
     public void OpenDoor()

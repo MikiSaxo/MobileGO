@@ -12,7 +12,7 @@ public class Wall : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteWallInPlace;
     [SerializeField] private Sprite[] _wallInPlaceSprites;
     [Header("--- Walls Infos --- ")]
-    [SerializeField] private WallInfos[] _wallInfos;
+    [SerializeField] protected WallInfos[] _wallInfos;
 
     private int _count = 0;
     private int _startCount = 0;
@@ -61,11 +61,6 @@ public class Wall : MonoBehaviour
             if(_spriteWallInPlace != null && _wallInPlaceSprites.Length > 0)
                 _spriteWallInPlace.sprite = _wallInPlaceSprites[1];
         }
-    }
-
-    private void ChangeSprite()
-    {
-        
     }
 
     protected void SetWallToModule()
