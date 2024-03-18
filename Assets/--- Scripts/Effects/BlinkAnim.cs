@@ -12,17 +12,28 @@ public class BlinkAnim : MonoBehaviour
 
     void Start()
     {
-        Blink();
+        BlinkIn();
     }
 
-    void Blink()
+    void BlinkIn()
     {
-        foreach (var text in _texts)
+        for (int i = 0; i < _texts.Length; i++)
         {
-            text.DOFade(0f, _blinkDuration / 2).SetEase(Ease.InOutQuad).OnComplete(() =>
-            {
-                text.DOFade(1f, _blinkDuration / 2).SetEase(Ease.InOutQuad).OnComplete(Blink);
-            });
+            if(i == 0)
+                _texts[i].DOFade(0f, _blinkDuration / 2).SetEase(Ease.InOutQuad).OnComplete(BlinkOut);
+            else
+                _texts[i].DOFade(0f, _blinkDuration / 2).SetEase(Ease.InOutQuad);
+        }
+    }
+
+    void BlinkOut()
+    {
+        for (int i = 0; i < _texts.Length; i++)
+        {
+            if(i == 0)
+                _texts[i].DOFade(1, _blinkDuration / 2).SetEase(Ease.InOutQuad).OnComplete(BlinkIn);
+            else
+                _texts[i].DOFade(1, _blinkDuration / 2).SetEase(Ease.InOutQuad);
         }
     }
 }

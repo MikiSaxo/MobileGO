@@ -46,7 +46,7 @@ public class PlayerManager : MonoBehaviour
         
         _currentModule = mod;
         gameObject.transform.DOComplete();
-        gameObject.transform.DOMove(_currentModule.gameObject.transform.position, _timeToMove);
+        gameObject.transform.DOMove(_currentModule.gameObject.transform.position, _timeToMove).SetEase(Ease.OutSine);
         
         PlayerHasSwipe?.Invoke();
         mod.OnPlayerEnter();

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560987154445934437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.078, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -1408800061, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
-  m_Color: {r: 1, g: 0.4536134, b: 0.37254906, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 062ab06680fc3114b835cd457e6a2f1b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5961316459565996483}
   - component: {fileID: 8234458594127013587}
+  - component: {fileID: 6709485680885584927}
   m_Layer: 5
   m_Name: ---- Character
   m_TagString: Untagged
@@ -110,8 +111,8 @@ Transform:
   m_GameObject: {fileID: 5540826971123253039}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7123092246994452243}
   m_Father: {fileID: 0}
@@ -131,3 +132,71 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentModule: {fileID: 0}
   _timeToMove: 0.5
+--- !u!114 &6709485680885584927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5540826971123253039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a1b3c1ae23a27442a9cb7741ca9d9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultStateName: Idle
+  _statesList:
+  - Name: Idle
+    TimeBetweenFrames: 0.205
+    SpriteSheet:
+    - {fileID: 21300000, guid: 062ab06680fc3114b835cd457e6a2f1b, type: 3}
+    - {fileID: 1052997389, guid: 016e14bcce23ee445910871635c53471, type: 3}
+  _actionsList:
+  - Name: GoUp
+    TimeBetweenFrames: 0.07
+    SpriteSheet:
+    - {fileID: -1691509937, guid: 88a62fac572c626408d56d08c24e297b, type: 3}
+    - {fileID: 1084047916, guid: 88a62fac572c626408d56d08c24e297b, type: 3}
+    - {fileID: -1349226681, guid: 88a62fac572c626408d56d08c24e297b, type: 3}
+    - {fileID: -1344726073, guid: 88a62fac572c626408d56d08c24e297b, type: 3}
+    - {fileID: 1919853307, guid: 88a62fac572c626408d56d08c24e297b, type: 3}
+    - {fileID: 1829243486, guid: 88a62fac572c626408d56d08c24e297b, type: 3}
+  - Name: GoDown
+    TimeBetweenFrames: 0.07
+    SpriteSheet:
+    - {fileID: 1052997389, guid: 016e14bcce23ee445910871635c53471, type: 3}
+    - {fileID: 374164754, guid: 016e14bcce23ee445910871635c53471, type: 3}
+    - {fileID: -1761763209, guid: 016e14bcce23ee445910871635c53471, type: 3}
+    - {fileID: -1628895904, guid: 016e14bcce23ee445910871635c53471, type: 3}
+    - {fileID: -691152626, guid: 016e14bcce23ee445910871635c53471, type: 3}
+    - {fileID: -1101000690, guid: 016e14bcce23ee445910871635c53471, type: 3}
+  - Name: GoLeft
+    TimeBetweenFrames: 0.06
+    SpriteSheet:
+    - {fileID: -1215768529, guid: 5dc6ef25482c7ed4d8360ed710c878f6, type: 3}
+    - {fileID: 213838170, guid: 5dc6ef25482c7ed4d8360ed710c878f6, type: 3}
+    - {fileID: -1531198723, guid: 5dc6ef25482c7ed4d8360ed710c878f6, type: 3}
+    - {fileID: -1914400890, guid: 5dc6ef25482c7ed4d8360ed710c878f6, type: 3}
+    - {fileID: -242021925, guid: 5dc6ef25482c7ed4d8360ed710c878f6, type: 3}
+    - {fileID: 488035910, guid: 5dc6ef25482c7ed4d8360ed710c878f6, type: 3}
+    - {fileID: -921613249, guid: 5dc6ef25482c7ed4d8360ed710c878f6, type: 3}
+    - {fileID: -1973649247, guid: 5dc6ef25482c7ed4d8360ed710c878f6, type: 3}
+  - Name: GoRight
+    TimeBetweenFrames: 0.06
+    SpriteSheet:
+    - {fileID: -607998797, guid: 4b1e538532234de4789df1ab204f518a, type: 3}
+    - {fileID: 219461129, guid: 4b1e538532234de4789df1ab204f518a, type: 3}
+    - {fileID: 250917445, guid: 4b1e538532234de4789df1ab204f518a, type: 3}
+    - {fileID: 1955905435, guid: 4b1e538532234de4789df1ab204f518a, type: 3}
+    - {fileID: -302944662, guid: 4b1e538532234de4789df1ab204f518a, type: 3}
+    - {fileID: 721994866, guid: 4b1e538532234de4789df1ab204f518a, type: 3}
+    - {fileID: 681572082, guid: 4b1e538532234de4789df1ab204f518a, type: 3}
+    - {fileID: -700572074, guid: 4b1e538532234de4789df1ab204f518a, type: 3}
+  OnActionEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  _spriteRenderer: {fileID: 4255943891578834941}
+  State:
+    Name: 
+    TimeBetweenFrames: 0
+    SpriteSheet: []

@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
     {
         _bonusTxt.text = $"{_bonusCount}";
         GoMagnet();
-        _fade.DOFade(0, _timeFadeOut);
+        _fade.DOFade(0, _timeFadeOut*3);
         _bonusTxt.DOFade(1, _timeFadeOut);
         _bonusImg.DOFade(1, _timeFadeOut);
     }

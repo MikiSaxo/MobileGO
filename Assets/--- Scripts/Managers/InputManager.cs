@@ -42,15 +42,30 @@ public class InputManager : MonoBehaviour
 
     private void CheckDirection(float angle)
     {
-        if(angle > _minMaxRightSwipe.x && angle < _minMaxRightSwipe.y)
+        if (angle > _minMaxRightSwipe.x && angle < _minMaxRightSwipe.y)
+        {
             _player.WantToSwipe(Directions.Right);
-        else if(angle > _minMaxTopSwipe.x && angle < _minMaxTopSwipe.y)
+            _player.gameObject.GetComponent<SpriteView>().PlayAction("GoRight");
+        }
+        else if (angle > _minMaxTopSwipe.x && angle < _minMaxTopSwipe.y)
+        {
             _player.WantToSwipe(Directions.Top);
-        else if(angle < _minMaxLeftSwipe.x)
+            _player.gameObject.GetComponent<SpriteView>().PlayAction("GoUp");
+        }
+        else if (angle < _minMaxLeftSwipe.x)
+        {
             _player.WantToSwipe(Directions.Left);
-        else if(angle > _minMaxLeftSwipe.y)
+            _player.gameObject.GetComponent<SpriteView>().PlayAction("GoLeft");
+        }
+        else if (angle > _minMaxLeftSwipe.y)
+        {
             _player.WantToSwipe(Directions.Left);
-        else if(angle > _minMaxDownSwipe.x && angle < _minMaxDownSwipe.y)
+            _player.gameObject.GetComponent<SpriteView>().PlayAction("GoLeft");
+        }
+        else if (angle > _minMaxDownSwipe.x && angle < _minMaxDownSwipe.y)
+        {
             _player.WantToSwipe(Directions.Down);
+            _player.gameObject.GetComponent<SpriteView>().PlayAction("GoDown");
+        }
     }
 }
