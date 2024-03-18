@@ -45,9 +45,9 @@ public class MapManager : MonoBehaviour
         PlayerManager.Instance.GoStartPos();
     }
 
-    public void ChangeLevel(Module nextStartPoint)
+    public void ChangeLevel()
     {
-        _nextStartPoint = nextStartPoint;
+        // _nextStartPoint = nextStartPoint;
         
         _currentLevel++;
 

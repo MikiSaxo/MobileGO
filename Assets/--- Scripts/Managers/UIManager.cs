@@ -57,9 +57,10 @@ public class UIManager : MonoBehaviour
 
     IEnumerator WaitMagnet()
     {
-        yield return new WaitForSeconds(.01f);
+        // yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(.1f);
         GoMagnetModules?.Invoke();
-        yield return new WaitForSeconds(.01f);
+        yield return new WaitForSeconds(.1f);
         GoMagnetWalls?.Invoke();
     }
 

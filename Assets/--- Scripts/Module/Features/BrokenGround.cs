@@ -33,7 +33,7 @@ public class BrokenGround : ModuleFeature
         IsBrokenModule = true;
         _module.IsBlockedModule = true;
         Instantiate(_fxBrokenGround, transform.position, Quaternion.identity);
-        Destroy(_fxWillBroke);
+        _fxWillBroke.SetActive(false);
     }
 
     public override void OnPlayerLeave()

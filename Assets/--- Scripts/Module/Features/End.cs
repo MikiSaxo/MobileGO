@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class End : ModuleFeature
 {
-    [Header("--- End ---")] 
-    [SerializeField] private Module _nextStartPoint;
+    // [Header("--- End ---")] 
+    // [SerializeField] private Module _nextStartPoint;
     
     public override void OnPlayerEnter()
     {
-        MapManager.Instance.ChangeLevel(_nextStartPoint);
+        MapManager.Instance.ChangeLevel();
     }
 }

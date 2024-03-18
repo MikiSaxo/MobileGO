@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Serialization;
@@ -15,6 +16,12 @@ public class KeyShake : MonoBehaviour
     private void Start()
     {
         _currentRotaNb = _rotationCount;
+        StartCoroutine(WaitBeforeAnim());
+    }
+
+    IEnumerator WaitBeforeAnim()
+    {
+        yield return new WaitForSeconds(2f);
         RotateLeft();
     }
 

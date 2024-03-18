@@ -18,18 +18,26 @@ public class Door : Wall
     private void Start()
     {
         PlayerManager.Instance.PlayerHasSwipe += SetWallToModule;
+        UIManager.Instance.GoMagnetWalls += Move;
 
         _startSize = _spriteDoor.gameObject.transform.localScale;
         
         SetWallToModule();
+
+        //gameObject.transform.DOMove(_wallInfos[0].NewPos.gameObject.transform.localPosition, 0f);
+        //gameObject.transform.position = _wallInfos[0].NewPos.localPosition;
+
+        
         StartCoroutine(WaitToTakePosition());
     }
 
     IEnumerator WaitToTakePosition()
     {
-        yield return new WaitForSeconds(.15f);
-
-        gameObject.transform.DOMove(_wallInfos[0].NewPos.position, 0f);
+        yield return new WaitForSeconds(2f);
+        print($"take pos local : {_wallInfos[0].NewPos.localPosition}");
+        // print($"take pos : {_wallInfos[0].NewPos.gameObject.transform.position}");
+        Move();
+        //gameObject.transform.position = _wallInfos[0].NewPos.localPosition;
     }
 
     public void OpenDoor()

@@ -18,6 +18,7 @@ public class StartPoint : ModuleFeature
         
         var imgRect = _spriteRenderer.size;
         _imgSize = new Vector2(imgRect.x, imgRect.y);
+        print($"imgSize : {_imgSize}");
 
        
         // print($"----> {new Vector3(pos.x, pos.y + imgSize.y, 0)}");

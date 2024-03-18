@@ -44,7 +44,7 @@ public class Wall : MonoBehaviour
         SetWallToModule();
     }
 
-    private void Move()
+    protected void Move()
     {
         gameObject.transform.DOComplete();
         if (_wallInfos[_count].NewPos != null)
