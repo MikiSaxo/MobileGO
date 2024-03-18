@@ -26,13 +26,6 @@ public class Wall : MonoBehaviour
         PlayerManager.Instance.PlayerIsDead += ResetStartPos;
         UIManager.Instance.GoMagnetWalls += GoWaitToReplace;
     }
-    
-    IEnumerator WaitToTakePosition()
-    {
-        yield return new WaitForSeconds(.15f);
-
-        gameObject.transform.DOMove(_wallInfos[0].NewPos.position, 0f);
-    }
 
     private void ChangePos()
     {
@@ -59,8 +52,10 @@ public class Wall : MonoBehaviour
             gameObject.transform.DOMove(_wallInfos[_count].NewPos.position, .5f);
             gameObject.transform.DOScale(Vector3.one, .5f).SetEase(Ease.OutBounce);
 
-            if(_spriteWallInPlace != null && _wallInPlaceSprites.Length > 0)
+            if (_spriteWallInPlace != null && _wallInPlaceSprites.Length > 0)
+            {
                 _spriteWallInPlace.sprite = _wallInPlaceSprites[0];
+            }
         }
         else
         {
@@ -93,7 +88,6 @@ public class Wall : MonoBehaviour
 
     private void GoWaitToReplace()
     {
-        //StartCoroutine(WaitToReplace());
         if (_startNextState)
         {
             ChangePos();
@@ -106,23 +100,6 @@ public class Wall : MonoBehaviour
             _startCount = _wallInfos.Length-1;
         }
     }
-    //
-    // IEnumerator WaitToReplace()
-    // {
-    //     yield return new WaitForSeconds(.01f);
-    //     
-    //     if (_startNextState)
-    //     {
-    //         ChangePos();
-    //         _startCount = 0;
-    //     }
-    //     else
-    //     {
-    //         SetWallToModule();
-    //         Move();
-    //         _startCount = _wallInfos.Length-1;
-    //     }
-    // }
 
     protected void ResetOldWall()
     {
