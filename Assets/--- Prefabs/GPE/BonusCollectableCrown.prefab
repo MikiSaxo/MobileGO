@@ -95,8 +95,9 @@ GameObject:
   - component: {fileID: 6367938255352404667}
   - component: {fileID: 697697901234667185}
   - component: {fileID: 512215286456919571}
+  - component: {fileID: -716753328031369596}
   m_Layer: 5
-  m_Name: BonusCollectable
+  m_Name: BonusCollectableCrown
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -161,6 +162,23 @@ MonoBehaviour:
   - {fileID: 1090716721, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
   - {fileID: -977407644, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
   - {fileID: -521278719, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+--- !u!114 &-716753328031369596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058728058689766576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75c34152ce169149919a81ac07380a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floatHeight: 0.02
+  _floatSpeed: 1
+  _rotationAngle: 5
+  _rotationDuration: 0.5
+  _crown: {fileID: 601850684139688137}
 --- !u!1 &6246306114977944161
 GameObject:
   m_ObjectHideFlags: 0

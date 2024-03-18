@@ -91,10 +91,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afb9c39fb5a86f4d8acd107cce6823a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAngle: 17
-  rotationDuration: 0.12
-  rotationCount: 3
-  delayBetweenRotations: 2
+  _rotationAngle: 17
+  _rotationDuration: 0.12
+  _rotationCount: 3
+  _delayBetweenRotations: 2
   _key: {fileID: 3865783490423427661}
 --- !u!1 &3865783490423427661
 GameObject:

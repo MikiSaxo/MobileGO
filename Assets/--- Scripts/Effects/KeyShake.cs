@@ -1,33 +1,34 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Serialization;
 
 public class KeyShake : MonoBehaviour
 {
-    public float rotationAngle = 30f;
-    public float rotationDuration = 0.25f;
-    public int rotationCount = 2;
-    public float delayBetweenRotations = 0.5f; // Ajout d'un délai entre chaque rotation
-
+    [SerializeField] private float _rotationAngle = 30f;
+    [SerializeField] private float _rotationDuration = 0.25f;
+    [SerializeField] private int _rotationCount = 2;
+    [SerializeField] private float _delayBetweenRotations = 0.5f;
     [SerializeField] private GameObject _key;
 
     private int _currentRotaNb;
-    
+
     private void Start()
     {
-        _currentRotaNb = rotationCount;
+        _currentRotaNb = _rotationCount;
         RotateLeft();
     }
 
     private void RotateLeft()
     {
-        _key.transform.DORotate(new Vector3(0, 0, rotationAngle), rotationDuration)
+        _key.transform.DORotate(new Vector3(0, 0, _rotationAngle), _rotationDuration)
             .OnComplete(RotateRightWithDelay);
     }
 
     private void RotateRightWithDelay()
     {
-        _key.transform.DORotate(new Vector3(0, 0, -rotationAngle), rotationDuration)
-            .OnComplete(() => {
+        _key.transform.DORotate(new Vector3(0, 0, -_rotationAngle), _rotationDuration)
+            .OnComplete(() =>
+            {
                 _currentRotaNb--;
                 if (_currentRotaNb > 0)
                 {
@@ -35,16 +36,16 @@ public class KeyShake : MonoBehaviour
                 }
                 else
                 {
-                    _key.transform.DORotate(Vector3.zero, rotationDuration)
-                        .OnComplete(() => Invoke(nameof(RotateLeftWithDelay), delayBetweenRotations));
-                    _currentRotaNb = rotationCount;
+                    _key.transform.DORotate(Vector3.zero, _rotationDuration)
+                        .OnComplete(() => Invoke(nameof(RotateLeftWithDelay), _delayBetweenRotations));
+                    _currentRotaNb = _rotationCount;
                 }
             });
     }
 
     private void RotateLeftWithDelay()
     {
-        _key.transform.DORotate(new Vector3(0, 0, rotationAngle), rotationDuration)
+        _key.transform.DORotate(new Vector3(0, 0, _rotationAngle), _rotationDuration)
             .OnComplete(RotateRightWithDelay);
     }
 }
