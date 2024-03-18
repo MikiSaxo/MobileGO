@@ -4117,6 +4117,14 @@ PrefabInstance:
       propertyPath: _modulesToLaser.Array.data[2]
       value: 
       objectReference: {fileID: 1538387881}
+    - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
+      propertyPath: _spritesLaserModule.Array.data[3]
+      value: 
+      objectReference: {fileID: -934970501, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+    - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
+      propertyPath: _spritesLaserOnModule.Array.data[3]
+      value: 
+      objectReference: {fileID: -173520953, guid: 81df068c93fa5d9469e63f534f77b9c1, type: 3}
     - target: {fileID: 2356509090566117397, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: m_RootOrder
       value: -1

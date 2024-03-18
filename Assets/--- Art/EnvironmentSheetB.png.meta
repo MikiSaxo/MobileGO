@@ -627,7 +627,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnvironmentSheetB_24
+      name: aah
       rect:
         serializedVersion: 2
         x: 0
@@ -648,7 +648,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnvironmentSheetB_25
+      name: aAhh
       rect:
         serializedVersion: 2
         x: 32
@@ -795,7 +795,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnvironmentSheetB_32
+      name: AAHH
       rect:
         serializedVersion: 2
         x: 0
@@ -816,7 +816,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnvironmentSheetB_33
+      name: TCHOUM
       rect:
         serializedVersion: 2
         x: 32
@@ -973,6 +973,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      AAHH: 1695218051
       EnvironmentSheetB_0: -468816248
       EnvironmentSheetB_1: 30605895
       EnvironmentSheetB_10: -1777071768
@@ -982,12 +983,8 @@ TextureImporter:
       EnvironmentSheetB_18: 98832678
       EnvironmentSheetB_19: 1671036970
       EnvironmentSheetB_2: 790844243
-      EnvironmentSheetB_24: -320413229
-      EnvironmentSheetB_25: 221549680
       EnvironmentSheetB_3: 1129020280
       EnvironmentSheetB_31: 1310028909
-      EnvironmentSheetB_32: 1695218051
-      EnvironmentSheetB_33: -934970501
       EnvironmentSheetB_34: 455026180
       EnvironmentSheetB_35: -960706131
       EnvironmentSheetB_36: -1296083721
@@ -1010,9 +1007,12 @@ TextureImporter:
       Spike_1: 1356051230
       Spike_2: -1408800061
       Spike_3: 598698655
+      TCHOUM: -934970501
       WallUp_1: 1986101090
       WallUp_2: -1533698713
       WallUp_3: -1521181951
+      aAhh: 221549680
+      aah: -320413229
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
