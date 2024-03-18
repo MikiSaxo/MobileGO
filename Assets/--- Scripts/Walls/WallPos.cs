@@ -28,13 +28,13 @@ public class WallPos : MonoBehaviour
         if (ModuleAtLeft != null)
         {
             var localPosition = ModuleAtLeft.gameObject.transform.localPosition;
-            gameObject.transform.localPosition = new Vector3(localPosition.x - HalfSizeSprite, localPosition.y, 0);
+            gameObject.transform.localPosition = new Vector3(localPosition.x + HalfSizeSprite, localPosition.y, 0);
         }
         
         if (ModuleAtRight != null)
         {
             var localPosition = ModuleAtRight.gameObject.transform.localPosition;
-            gameObject.transform.localPosition = new Vector3(localPosition.x + HalfSizeSprite, localPosition.y, 0);
+            gameObject.transform.localPosition = new Vector3(localPosition.x - HalfSizeSprite, localPosition.y, 0);
         }
         
         if (ModuleAtDown != null)
