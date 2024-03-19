@@ -12,8 +12,6 @@ public class BonusCollectable : ModuleFeature
 
     private bool _hasGetBonus;
 
-    
-    
     private void GetBonus()
     {
         if (_hasGetBonus) return;
@@ -22,6 +20,14 @@ public class BonusCollectable : ModuleFeature
         UIManager.Instance.UpdateNbBonus(1);
         _spriteBonus.DOFade(0, 1f);
         Instantiate(_fxEarnCrown, transform.position, Quaternion.identity);
+
+        StartCoroutine(WaitPlayAnimPlayer());
+    }
+
+    IEnumerator WaitPlayAnimPlayer()
+    {
+        yield return new WaitForSeconds(.25f);
+        PlayerManager.Instance.PlayAnim("Bonus");
     }
 
     public override void OnPlayerEnter()

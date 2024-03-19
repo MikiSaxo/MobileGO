@@ -103,14 +103,7 @@ public class PlayerManager : MonoBehaviour
 
         yield return new WaitForSeconds(_timeToMove-.2f);
         
-        if(_saveLastDir == Directions.Down)
-            gameObject.GetComponent<SpriteView>().PlayAction("DeathDown");
-        else if(_saveLastDir == Directions.Top)
-            gameObject.GetComponent<SpriteView>().PlayAction("DeathUp");
-        else if(_saveLastDir == Directions.Left)
-            gameObject.GetComponent<SpriteView>().PlayAction("DeathLeft");
-        else if(_saveLastDir == Directions.Right)
-            gameObject.GetComponent<SpriteView>().PlayAction("DeathRight");
+        PlayAnim("Death");
         
         yield return new WaitForSeconds(_timeToMove);
         
@@ -127,6 +120,18 @@ public class PlayerManager : MonoBehaviour
         UIManager.Instance.GetHit();
         
         _isDead = false;
+    }
+
+    public void PlayAnim(string keyWord)
+    {
+        if(_saveLastDir == Directions.Down)
+            gameObject.GetComponent<SpriteView>().PlayAction($"{keyWord}Down");
+        else if(_saveLastDir == Directions.Top)
+            gameObject.GetComponent<SpriteView>().PlayAction($"{keyWord}Up");
+        else if(_saveLastDir == Directions.Left)
+            gameObject.GetComponent<SpriteView>().PlayAction($"{keyWord}Left");
+        else if(_saveLastDir == Directions.Right)
+            gameObject.GetComponent<SpriteView>().PlayAction($"{keyWord}Right");
     }
 }
 

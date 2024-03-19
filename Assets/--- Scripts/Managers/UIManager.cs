@@ -53,8 +53,7 @@ public class UIManager : MonoBehaviour
         _bonusTxt.DOFade(1, _timeFadeOut);
         _bonusImg.DOFade(1, _timeFadeOut);
     }
-
-
+    
     public void UpdateNbBonus(int add)
     {
         _bonusCount += add;

@@ -968,6 +968,14 @@ PrefabInstance:
       propertyPath: ModuleAtDown
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7953341087526937395, guid: 3316e00547536a94aa07e46ce771ff84, type: 3}
+      propertyPath: ModuleAtLeft
+      value: 
+      objectReference: {fileID: 4374263643096765146}
+    - target: {fileID: 7953341087526937395, guid: 3316e00547536a94aa07e46ce771ff84, type: 3}
+      propertyPath: ModuleAtRight
+      value: 
+      objectReference: {fileID: 456322225364176761}
     - target: {fileID: 8102252977323147592, guid: 3316e00547536a94aa07e46ce771ff84, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

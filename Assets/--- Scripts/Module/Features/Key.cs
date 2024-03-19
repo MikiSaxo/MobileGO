@@ -23,6 +23,8 @@ public class Key : ModuleFeature
         _spriteKey.DOFade(0, 1f);
         _door.OpenDoor();
         Instantiate(_fxEarnKey, transform.position, Quaternion.identity);
+
+        StartCoroutine(WaitPlayAnimPlayer());
     }
 
     public override void OnPlayerEnter()
@@ -36,6 +38,13 @@ public class Key : ModuleFeature
         _spriteKey.DOFade(1, .5f);
         _door.CloseDoor();
     }
+    
+    IEnumerator WaitPlayAnimPlayer()
+    {
+        yield return new WaitForSeconds(.25f);
+        PlayerManager.Instance.PlayAnim("Bonus");
+    }
+
     
     private void OnDisable()
     {

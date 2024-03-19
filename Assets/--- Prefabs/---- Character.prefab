@@ -130,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b40f7a46eaf7504d89a89bde173a3cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentModule: {fileID: 0}
   _timeToMove: 0.5
 --- !u!114 &6709485680885584927
 MonoBehaviour:
@@ -232,6 +231,42 @@ MonoBehaviour:
     - {fileID: -856698240, guid: 1b5711f9dc686f84a88c75cbff9c8718, type: 3}
     - {fileID: 1431084618, guid: 1b5711f9dc686f84a88c75cbff9c8718, type: 3}
     - {fileID: 1756099136, guid: 1b5711f9dc686f84a88c75cbff9c8718, type: 3}
+  - Name: BonusUp
+    TimeBetweenFrames: 0.1
+    SpriteSheet:
+    - {fileID: -1641049428, guid: e5cb4d8ac57fc1948abbd5eddaf61712, type: 3}
+    - {fileID: -1266392859, guid: e5cb4d8ac57fc1948abbd5eddaf61712, type: 3}
+    - {fileID: 1837846397, guid: e5cb4d8ac57fc1948abbd5eddaf61712, type: 3}
+    - {fileID: 531302270, guid: e5cb4d8ac57fc1948abbd5eddaf61712, type: 3}
+    - {fileID: 1837846397, guid: e5cb4d8ac57fc1948abbd5eddaf61712, type: 3}
+    - {fileID: 531302270, guid: e5cb4d8ac57fc1948abbd5eddaf61712, type: 3}
+  - Name: BonusDown
+    TimeBetweenFrames: 0.1
+    SpriteSheet:
+    - {fileID: 1781290498, guid: 695a99b113cf6c34a8f336cf691de3be, type: 3}
+    - {fileID: -828875707, guid: 695a99b113cf6c34a8f336cf691de3be, type: 3}
+    - {fileID: 340439422, guid: 695a99b113cf6c34a8f336cf691de3be, type: 3}
+    - {fileID: 1517137287, guid: 695a99b113cf6c34a8f336cf691de3be, type: 3}
+    - {fileID: 340439422, guid: 695a99b113cf6c34a8f336cf691de3be, type: 3}
+    - {fileID: 1517137287, guid: 695a99b113cf6c34a8f336cf691de3be, type: 3}
+  - Name: BonusLeft
+    TimeBetweenFrames: 0.1
+    SpriteSheet:
+    - {fileID: -431257821, guid: 8eadd68294c35334d81fb7d35bbf859b, type: 3}
+    - {fileID: -847434115, guid: 8eadd68294c35334d81fb7d35bbf859b, type: 3}
+    - {fileID: 399153399, guid: 8eadd68294c35334d81fb7d35bbf859b, type: 3}
+    - {fileID: 544583596, guid: 8eadd68294c35334d81fb7d35bbf859b, type: 3}
+    - {fileID: 399153399, guid: 8eadd68294c35334d81fb7d35bbf859b, type: 3}
+    - {fileID: 544583596, guid: 8eadd68294c35334d81fb7d35bbf859b, type: 3}
+  - Name: BonusRight
+    TimeBetweenFrames: 0.1
+    SpriteSheet:
+    - {fileID: -561762142, guid: a1def80cc79034943ad47581bcbb8d5a, type: 3}
+    - {fileID: -80528663, guid: a1def80cc79034943ad47581bcbb8d5a, type: 3}
+    - {fileID: 1133461696, guid: a1def80cc79034943ad47581bcbb8d5a, type: 3}
+    - {fileID: 1133461696, guid: a1def80cc79034943ad47581bcbb8d5a, type: 3}
+    - {fileID: 1258219221, guid: a1def80cc79034943ad47581bcbb8d5a, type: 3}
+    - {fileID: 1258219221, guid: a1def80cc79034943ad47581bcbb8d5a, type: 3}
   OnActionEnd:
     m_PersistentCalls:
       m_Calls: []
