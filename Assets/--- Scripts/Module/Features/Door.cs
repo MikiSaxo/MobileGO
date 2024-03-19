@@ -33,6 +33,8 @@ public class Door : Wall
         _spriteDoor.gameObject.transform.DOComplete();
         _spriteDoor.gameObject.transform.DOScale(Vector3.zero, .5f);
         Instantiate(_fxOpenDoor, transform.position, Quaternion.identity);
+        
+        AudioManager.Instance.PlaySound("snd_door_open");
     }
 
     public void CloseDoor()

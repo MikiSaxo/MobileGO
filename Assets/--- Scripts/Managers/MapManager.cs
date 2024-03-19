@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Security.Cryptography;
 using DG.Tweening;
 using UnityEngine;
 
@@ -27,15 +28,9 @@ public class MapManager : MonoBehaviour
 
     private void SetPosAllLevels()
     {
-
         SpawnNewLevel();
-      
         
-        // _allLevels[_currentLevel].transform.DOMove(_levelPoints[1].position, _timeToEnterLevel).SetEase(Ease.InExpo).OnComplete(TpPlayer);
         StartCoroutine(WaitMoveLevel());
-
-
-        // PlayerManager.Instance.GoStartPos();
     }
 
     private void SpawnNewLevel()
@@ -83,11 +78,12 @@ public class MapManager : MonoBehaviour
     {
         PlayerManager.Instance.GoNextStartPoint(_nextStartPoint);
         _allLevels[_currentLevel-1].SetActive(false);
+        DestroyLevel();
     }
 
-    private void Update()
+    private void DestroyLevel()
     {
-        // if (Input.GetMouseButtonDown(0))
-        //     ChangeLevel(null);
+        var level = _allLevels[_currentLevel - 1];
+        Destroy(level,1);
     }
 }

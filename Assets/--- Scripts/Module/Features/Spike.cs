@@ -31,28 +31,29 @@ public class Spike : ModuleFeature
     protected override void ChangeState()
     {
         _count++;
-        // _spikeImg.gameObject.transform.DOComplete();
         
         if (_count >= _sprites.Length)
         {
             _count = 0;
             _goDead = true;
-
-            // _spikeImg.gameObject.transform.DOScale(Vector3.one, .5f);
+            AudioManager.Instance.PlaySound("snd_spikes_out");
         }
         else
         {
             _goDead = false;
-            // _spikeImg.gameObject.transform.DOScale(Vector3.one*.5f, .5f);
         }
+
         
         _spriteSpike.sprite = _sprites[_count];
     }
     
     public override void OnPlayerEnter()
     {
-        if(_goDead)
+        if (_goDead)
+        {
             PlayerManager.Instance.KillPlayer();
+            AudioManager.Instance.PlaySound("snd_death_spikes");
+        }
     }
 
     protected override void ResetStartPos()

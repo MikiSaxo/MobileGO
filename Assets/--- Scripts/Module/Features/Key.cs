@@ -25,6 +25,8 @@ public class Key : ModuleFeature
         Instantiate(_fxEarnKey, transform.position, Quaternion.identity);
 
         StartCoroutine(WaitPlayAnimPlayer());
+        
+        AudioManager.Instance.PlaySound("snd_collect");
     }
 
     public override void OnPlayerEnter()

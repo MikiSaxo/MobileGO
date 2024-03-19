@@ -22,6 +22,8 @@ public class BonusCollectable : ModuleFeature
         Instantiate(_fxEarnCrown, transform.position, Quaternion.identity);
 
         StartCoroutine(WaitPlayAnimPlayer());
+        
+        AudioManager.Instance.PlaySound("snd_collect");
     }
 
     IEnumerator WaitPlayAnimPlayer()

@@ -52,6 +52,8 @@ public class PlayerManager : MonoBehaviour
         if (_isEnd) StartCoroutine(WaitToGoNextStation(_startModule));
         
         CheckIsDead();
+        
+        AudioManager.Instance.PlaySound("snd_walk");
     }
 
     private bool CheckIfCanSwipe(Module mod)
@@ -89,8 +91,10 @@ public class PlayerManager : MonoBehaviour
 
     public bool CheckIsDead()
     {
-        if(_currentModule.IsDeathModule)
+        if (_currentModule.IsDeathModule)
+        {
             StartCoroutine(WaitGoDeath(false));
+        }
 
         return _currentModule.IsDeathModule;
     }
@@ -101,6 +105,7 @@ public class PlayerManager : MonoBehaviour
         
         StartCoroutine(WaitGoDeath(true));
         _isRestarting = true;
+        AudioManager.Instance.PlaySound("snd_death_restart");
     }
     public void KillPlayer()
     {

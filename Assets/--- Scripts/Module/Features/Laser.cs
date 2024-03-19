@@ -7,16 +7,16 @@ using UnityEngine.UI;
 
 public class Laser : MonoBehaviour
 {
-    [Header("--- My Module")] [SerializeField]
-    private SpriteRenderer _laserModuleImg;
+    [Header("--- My Module")]
 
+    [SerializeField] private SpriteRenderer _laserModuleImg;
     [SerializeField] private Sprite[] _spritesLaserModule;
     [SerializeField] private Directions _myDirection;
 
-    [Header("--- On Module")] [SerializeField]
-    private GameObject _laserOnModulePrefab;
-
-    [SerializeField] private Sprite[] _spritesLaserOnModule;
+    [Header("--- On Module")] 
+    
+    [SerializeField] private int _laserStateNumber = 4;
+    [SerializeField] private GameObject _laserOnModulePrefab;
     [SerializeField] private Module[] _modulesToLaser;
 
 
@@ -24,6 +24,7 @@ public class Laser : MonoBehaviour
 
     private int _count = 0;
     private bool _isBlock;
+    private bool _isDead;
 
     private void Start()
     {
@@ -42,12 +43,17 @@ public class Laser : MonoBehaviour
 
     private void GoChangeState()
     {
-        StartCoroutine(WaitChangeState());
+        if (!_isDead)
+        {
+            StartCoroutine(WaitChangeState());
+            // ResetDeathModules();
+            // ChangeState();
+        }
     }
 
     private void ResetStartPos()
     {
-        _count = _spritesLaserOnModule.Length;
+        _count = _laserStateNumber;
         ChangeState();
     }
 
@@ -55,9 +61,9 @@ public class Laser : MonoBehaviour
     {
         // Reset all DeathModule
         ResetDeathModules();
-
+    
         yield return new WaitForSeconds(.1f);
-
+    
         ChangeState();
     }
 
@@ -67,21 +73,31 @@ public class Laser : MonoBehaviour
         _isBlock = false;
 
 
+        if (_count >= _laserStateNumber)
+        {
+            _count = 0;
+        }
+
         for (int i = 0; i < _modulesToLaser.Length; i++)
         {
             var laser = _lasersOnModule[i];
             var mod = _modulesToLaser[i];
 
             // Block sprite or not
-            if (!_isBlock && _count <= _spritesLaserOnModule.Length - 1)
+            if (!_isBlock && _count <= _laserStateNumber - 1)
+            {
                 laser.ChangeSprite(_count);
+                // Death module if not block
+                if (_count == _laserStateNumber - 1)
+                    mod.IsDeathModule = true;
+            }
             else
+            {
                 laser.ChangeSprite(0);
+                mod.IsDeathModule = false;
+            }
 
 
-            // Death module if not block
-            if (_count == _spritesLaserOnModule.Length - 1 && !_isBlock)
-                mod.IsDeathModule = true;
 
 
             if (mod.GetWallSide((int)_myDirection) != null)
@@ -92,18 +108,22 @@ public class Laser : MonoBehaviour
 
         if (PlayerManager.Instance.CheckIsDead())
         {
+            AudioManager.Instance.PlaySound("snd_death_fire");
             ResetDeathModules();
         }
 
-        if (_count <= _spritesLaserOnModule.Length - 1)
+        if (_count <= _laserStateNumber - 1)
             _laserModuleImg.sprite = _spritesLaserModule[_count];
+        
+        if (_count == _laserStateNumber - 1)
+            AudioManager.Instance.PlaySound("snd_dragon_fire");
     }
 
     private void ResetDeathModules()
     {
-        if (_count >= _spritesLaserOnModule.Length - 1)
+        if (_count >= _laserStateNumber-1)
         {
-            _count = 0;
+            // _count = 0;
             foreach (var mod in _modulesToLaser)
             {
                 mod.IsDeathModule = false;
@@ -126,7 +146,8 @@ public class Laser : MonoBehaviour
 
     private void OnDisable()
     {
+        _isDead = true;
         PlayerManager.Instance.PlayerHasSwipe -= ChangeState;
-        PlayerManager.Instance.PlayerIsDead += ResetStartPos;
+        PlayerManager.Instance.PlayerIsDead -= ResetStartPos;
     }
 }

@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8469639064194396146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2134866074506674836}
+  - component: {fileID: 100768651162074191}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2134866074506674836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8469639064194396146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &100768651162074191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8469639064194396146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b129d40677c7f834aa96e7092ea9d31e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - Name: snd_walk
+    Clip: {fileID: 8300000, guid: 4dc761b9e57359e42afbe39ea1863bc9, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: snd_death_restart
+    Clip: {fileID: 8300000, guid: 2f6069d24700d7e47a1218df831b5149, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: snd_death_spikes
+    Clip: {fileID: 8300000, guid: 8baa36ac88a008a4286109b4534dd867, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: snd_death_fire
+    Clip: {fileID: 8300000, guid: a4b8f8326a6fc0c4f91777970944736d, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: snd_dragon_fire
+    Clip: {fileID: 8300000, guid: f11f201c50f1ca14792ac4ae68b51442, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: snd_door_open
+    Clip: {fileID: 8300000, guid: 179c75d7f262ff0499970ca008e6f08d, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: snd_break_ground
+    Clip: {fileID: 8300000, guid: aef5fc761f17ff04ca491e62d7034503, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: snd_spikes_out
+    Clip: {fileID: 8300000, guid: e2df82dee85679b4ab83a900a37dd967, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: snd_collect
+    Clip: {fileID: 8300000, guid: f0046473aa5f8f74bb6c102c687e5fbc, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: snd_end_level
+    Clip: {fileID: 8300000, guid: ef70c5159b83213479fc7d9bf41a0bd6, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: snd_music_menu
+    Clip: {fileID: 8300000, guid: 57050d77b51b2dd4abb9348b6ea5089f, type: 3}
+    Volume: 5
+    Pitch: 1
+    Loop: 1
+    Source: {fileID: 0}
+  - Name: snd_music_main
+    Clip: {fileID: 8300000, guid: 8b67877bddd991b44ba29eeb0bd1c73b, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 1
+    Source: {fileID: 0}
+  - Name: snd_UI
+    Clip: {fileID: 8300000, guid: bf3862d4f424fdd4486d4c4f0ab73990, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}

@@ -1103,6 +1103,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 179162964238040618}
     m_Modifications:
     - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
+      propertyPath: _myDirection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: _modulesToLaser.Array.size
       value: 6
       objectReference: {fileID: 0}

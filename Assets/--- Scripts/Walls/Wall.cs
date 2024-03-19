@@ -101,7 +101,6 @@ public class Wall : MonoBehaviour
         
         if (!_hasInit)
         {
-            print("init");
             gameObject.transform.DOComplete();
             _hasInit = true;
         }

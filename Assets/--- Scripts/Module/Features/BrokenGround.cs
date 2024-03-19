@@ -32,6 +32,8 @@ public class BrokenGround : ModuleFeature
         
         Instantiate(_fxBrokenGround, transform.position, Quaternion.identity);
         _fxWillBroke.SetActive(false);
+        
+        AudioManager.Instance.PlaySound("snd_break_ground");
     }
 
     public override void OnPlayerLeave()

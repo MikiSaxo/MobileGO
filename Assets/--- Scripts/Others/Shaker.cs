@@ -9,6 +9,7 @@ public class Shaker : MonoBehaviour
     [SerializeField] private float _durationShaking = 0f;
 
     public static Shaker Instance;
+    private Vector3 _startPos;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class Shaker : MonoBehaviour
     private void Start()
     {
         PlayerManager.Instance.PlayerHasSwipe += GoShake;
+        _startPos = transform.position;
     }
 
     public void GoShakeAddPower(float addTime, float strengthAdded)
@@ -32,7 +34,6 @@ public class Shaker : MonoBehaviour
 
     private IEnumerator Shaking(float timeAdded, float strengthAdded)
     {
-        Vector3 startPosition = transform.position;
         float elapsedTime = 0f;
 
         var _addDuration = timeAdded + _durationShaking;
@@ -41,11 +42,11 @@ public class Shaker : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float strength = _curve.Evaluate(elapsedTime / _addDuration) * strengthAdded;
-            transform.position = startPosition + Random.insideUnitSphere * strength;
+            transform.position = _startPos + Random.insideUnitSphere * strength;
             yield return null;
         }
 
-        transform.position = startPosition;
+        transform.position = _startPos;
     }
     
     private void OnDisable()

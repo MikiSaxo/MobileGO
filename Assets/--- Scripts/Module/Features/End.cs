@@ -11,5 +11,6 @@ public class End : ModuleFeature
     {
         MapManager.Instance.ChangeLevel();
         UIManager.Instance.UpdateRestartBtn(false);
+        AudioManager.Instance.PlaySound("snd_end_level");
     }
 }
