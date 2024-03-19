@@ -10,5 +10,6 @@ public class End : ModuleFeature
     public override void OnPlayerEnter()
     {
         MapManager.Instance.ChangeLevel();
+        UIManager.Instance.UpdateRestartBtn(false);
     }
 }

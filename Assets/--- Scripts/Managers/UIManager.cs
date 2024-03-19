@@ -16,20 +16,26 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image _bonusImg;
     [SerializeField] private GameObject _parentBonus;
     [SerializeField] private Transform _endPos;
+    
     [Header("--- Fade ---")]
     [SerializeField] private Image _fade;
     [SerializeField] private float _timeFadeOut = .5f;
     [SerializeField] private float _timeFadeIn = 1.5f;
+    
     [Header("--- End ---")]
     [SerializeField] private TMP_Text _winText;
     [SerializeField] private float _timeSpawnWinText = 1;
     [SerializeField] private float _timeDespawnWinText = .5f;
     [SerializeField] private float _timeGoMainScene = 5;
+    
     [Header("--- Hit ---")]
     [SerializeField] private Image _hit;
     [SerializeField] private float _timeHit = .25f;
     [SerializeField] private float _addShakeTime = .5f;
     [SerializeField] private float _addShakeStrength = 2f;
+    
+    [Header("--- Restart ---")]
+    [SerializeField] private GameObject _restartBtn;
 
     private int _bonusCount = 0;
 
@@ -92,5 +98,10 @@ public class UIManager : MonoBehaviour
         _hit.DOFade(1, 0);
         _hit.DOFade(0, _timeHit);
         Shaker.Instance.GoShakeAddPower(_addShakeTime, _addShakeStrength);
+    }
+
+    public void UpdateRestartBtn(bool state)
+    {
+        _restartBtn.transform.DOScale(state ? 1 : 0, .5f);
     }
 }

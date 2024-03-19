@@ -86,6 +86,8 @@ public class PlayerManager : MonoBehaviour
         
         _isEnd = false;
         CanMove = true;
+        
+        UIManager.Instance.UpdateRestartBtn(true);
     }
 
     public void CheckIsDead()

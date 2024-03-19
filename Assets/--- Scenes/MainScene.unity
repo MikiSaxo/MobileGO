@@ -970,6 +970,7 @@ MonoBehaviour:
   _timeHit: 0.25
   _addShakeTime: 0.3
   _addShakeStrength: 5
+  _restartBtn: {fileID: 411669922}
 --- !u!1 &958702708
 GameObject:
   m_ObjectHideFlags: 0
