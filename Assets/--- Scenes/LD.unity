@@ -970,6 +970,7 @@ MonoBehaviour:
   _timeHit: 0.25
   _addShakeTime: 0.3
   _addShakeStrength: 5
+  _restartBtn: {fileID: 0}
 --- !u!1 &958702708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1213,6 @@ MonoBehaviour:
   - {fileID: 413956038}
   - {fileID: 1771492102}
   _allLevels:
-  - {fileID: 2921686452600484601, guid: ce205dabac2573241be74cf3c1e53872, type: 3}
   - {fileID: 2921686452600484601, guid: 63a8324a71f3f6b4c86d1ff7ab22e044, type: 3}
   - {fileID: 2921686452600484601, guid: ece667be451052146aa2a423b4df53b3, type: 3}
   - {fileID: 2921686452600484601, guid: fbe5d91d06f34684bac841a52a835e4c, type: 3}
@@ -1220,6 +1220,7 @@ MonoBehaviour:
   - {fileID: 2921686452600484601, guid: 45a0d33225ddad740b5aedc74bd8dacb, type: 3}
   - {fileID: 2921686452600484601, guid: 6e9e935a412180d419667c91d46fbd86, type: 3}
   - {fileID: 2921686452600484601, guid: 78e85e57f0076a04292aeb38e12c126f, type: 3}
+  - {fileID: 2921686452600484601, guid: 4ad96efb85467394c9b5b1c0d47852dd, type: 3}
   - {fileID: 2921686452600484601, guid: a9870a9fd01c397468f050100e13c978, type: 3}
   _timeToExitLevel: 2
   _timeToEnterLevel: 2
