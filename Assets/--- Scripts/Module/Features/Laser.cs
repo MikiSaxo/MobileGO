@@ -7,31 +7,42 @@ using UnityEngine.UI;
 
 public class Laser : MonoBehaviour
 {
-    [Header("--- My Module")]
-    [SerializeField] private SpriteRenderer _laserModuleImg;
+    [Header("--- My Module")] [SerializeField]
+    private SpriteRenderer _laserModuleImg;
+
     [SerializeField] private Sprite[] _spritesLaserModule;
-    
-    [Header("--- On Module")]
-    [SerializeField] private GameObject _laserOnModulePrefab;
+    [SerializeField] private Directions _myDirection;
+
+    [Header("--- On Module")] [SerializeField]
+    private GameObject _laserOnModulePrefab;
+
     [SerializeField] private Sprite[] _spritesLaserOnModule;
     [SerializeField] private Module[] _modulesToLaser;
-    
+
 
     private List<LaserOnModule> _lasersOnModule = new List<LaserOnModule>();
 
     private int _count = 0;
-    
+    private bool _isBlock;
+
     private void Start()
     {
-        PlayerManager.Instance.PlayerHasSwipe += ChangeState;
+        PlayerManager.Instance.PlayerHasSwipe += GoChangeState;
         PlayerManager.Instance.PlayerIsDead += ResetStartPos;
 
         for (int i = 0; i < _modulesToLaser.Length; i++)
         {
             GameObject go = Instantiate(_laserOnModulePrefab, _modulesToLaser[i].transform);
             _lasersOnModule.Add(go.GetComponent<LaserOnModule>());
+
+            go.GetComponent<LaserOnModule>().Init(_myDirection);
             go.GetComponent<LaserOnModule>().ChangeSprite(_spritesLaserOnModule[0]);
         }
+    }
+
+    private void GoChangeState()
+    {
+        StartCoroutine(WaitChangeState());
     }
 
     private void ResetStartPos()
@@ -40,33 +51,62 @@ public class Laser : MonoBehaviour
         ChangeState();
     }
 
+    IEnumerator WaitChangeState()
+    {
+        // Reset all DeathModule
+        ResetDeathModules();
+
+        yield return new WaitForSeconds(.1f);
+
+        ChangeState();
+    }
+
     private void ChangeState()
     {
         _count++;
+        _isBlock = false;
 
-        if (_count >= _spritesLaserOnModule.Length)
+
+        for (int i = 0; i < _modulesToLaser.Length; i++)
+        {
+            var laser = _lasersOnModule[i];
+            var mod = _modulesToLaser[i];
+
+            // Block sprite or not
+            if (!_isBlock && _count <= _spritesLaserOnModule.Length - 1)
+                laser.ChangeSprite(_spritesLaserOnModule[_count]);
+            else
+                laser.ChangeSprite(_spritesLaserOnModule[0]);
+
+
+            // Death module if not block
+            if (_count == _spritesLaserOnModule.Length - 1 && !_isBlock)
+                mod.IsDeathModule = true;
+
+
+            if (mod.GetWallSide((int)_myDirection) != null)
+            {
+                _isBlock = true;
+            }
+        }
+
+        if (PlayerManager.Instance.CheckIsDead())
+        {
+            ResetDeathModules();
+        }
+
+        if (_count == _spritesLaserOnModule.Length - 1)
+            _laserModuleImg.sprite = _spritesLaserModule[_count];
+    }
+
+    private void ResetDeathModules()
+    {
+        if (_count >= _spritesLaserOnModule.Length - 1)
         {
             _count = 0;
             foreach (var mod in _modulesToLaser)
             {
                 mod.IsDeathModule = false;
-            }
-        }
-
-        foreach (var laser in _lasersOnModule)
-        {
-            laser.ChangeSprite(_spritesLaserOnModule[_count]);
-        }
-
-        // _laserRayImg.sprite = _spritesLaser[_count];
-        // _laserRayImg.transform.DOScale(_spritesLaser[_count] == null ? 0 : 1, 0);
-        _laserModuleImg.sprite = _spritesLaserModule[_count];
-
-        if (_count == _spritesLaserOnModule.Length - 1)
-        {
-            foreach (var mod in _modulesToLaser)
-            {
-                mod.IsDeathModule = true;
             }
         }
     }
@@ -83,7 +123,7 @@ public class Laser : MonoBehaviour
             }
         }
     }
-    
+
     private void OnDisable()
     {
         PlayerManager.Instance.PlayerHasSwipe -= ChangeState;

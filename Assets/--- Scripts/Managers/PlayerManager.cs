@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     private Module _startModule;
     private bool _isDead;
     private bool _isEnd;
+    private bool _isRestarting;
     private Directions _saveLastDir;
     public bool CanMove { get; set; }
 
@@ -86,24 +87,41 @@ public class PlayerManager : MonoBehaviour
         UIManager.Instance.UpdateRestartBtn(true);
     }
 
-    public void CheckIsDead()
+    public bool CheckIsDead()
     {
         if(_currentModule.IsDeathModule)
-            StartCoroutine(WaitGoDeath());
+            StartCoroutine(WaitGoDeath(false));
+
+        return _currentModule.IsDeathModule;
     }
 
+    public void KillPlayerRestart()
+    {
+        if (_isRestarting) return;
+        
+        StartCoroutine(WaitGoDeath(true));
+        _isRestarting = true;
+    }
     public void KillPlayer()
     {
-        StartCoroutine(WaitGoDeath());
+        StartCoroutine(WaitGoDeath(false));
     }
 
-    IEnumerator WaitGoDeath()
+    IEnumerator WaitGoDeath(bool isRestart)
     {
         _isDead = true;
 
-        yield return new WaitForSeconds(_timeToMove-.2f);
-        
-        PlayAnim("Death");
+        if(!isRestart)
+            yield return new WaitForSeconds(_timeToMove-.2f);
+
+        if (!isRestart)
+        {
+            PlayAnim("Death");
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteView>().PlayAction($"DeathDown");
+        }
         
         yield return new WaitForSeconds(_timeToMove);
         
@@ -118,10 +136,11 @@ public class PlayerManager : MonoBehaviour
         gameObject.transform.position = _startModule.gameObject.transform.position;
         _currentModule = _startModule;
         UIManager.Instance.GetHit();
+        _isRestarting = false;
         
         _isDead = false;
     }
-
+    
     public void PlayAnim(string keyWord)
     {
         if(_saveLastDir == Directions.Down)

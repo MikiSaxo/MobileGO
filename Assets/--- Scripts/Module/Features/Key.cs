@@ -44,10 +44,4 @@ public class Key : ModuleFeature
         yield return new WaitForSeconds(.25f);
         PlayerManager.Instance.PlayAnim("Bonus");
     }
-
-    
-    private void OnDisable()
-    {
-        PlayerManager.Instance.PlayerIsDead -= ResetStartPos;
-    }
 }

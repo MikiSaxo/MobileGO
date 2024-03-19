@@ -134,6 +134,11 @@ public class Module : MonoBehaviour
         return true;
     }
 
+    public Wall GetWallSide(int index)
+    {
+        return _walls[index];
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

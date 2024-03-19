@@ -18,6 +18,7 @@ public class Wall : MonoBehaviour
     private int _startCount = 0;
 
     protected bool _isBlocked = false;
+    protected bool _hasInit = false;
 
 
     private void Start()
@@ -41,6 +42,12 @@ public class Wall : MonoBehaviour
         Move(); 
 
         SetWallToModule();
+
+        if (!_hasInit)
+        {
+            gameObject.transform.DOComplete();
+            _hasInit = true;
+        }
     }
 
     protected void Move()
