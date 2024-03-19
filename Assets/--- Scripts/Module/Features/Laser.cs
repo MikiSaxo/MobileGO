@@ -59,11 +59,10 @@ public class Laser : MonoBehaviour
 
     IEnumerator WaitChangeState()
     {
-        // Reset all DeathModule
-        ResetDeathModules();
-    
         yield return new WaitForSeconds(.1f);
     
+        // Reset all DeathModule
+        ResetDeathModules();
         ChangeState();
     }
 
