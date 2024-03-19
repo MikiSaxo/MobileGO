@@ -6,20 +6,29 @@ using UnityEngine;
 public class LaserOnModule : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Sprite[] _sprites;
 
-    // [SerializeField] private Module _myModule;
-    // [SerializeField] private Module _isLaserOnTop;
-    // [SerializeField] private Module _isLaserOnLeft;
-    // [SerializeField] private Module _isLaserOnRight;
-    // [SerializeField] private Module _isLaserOnDown;
+    private bool _isRotate;
+    
 
     public void Init(Directions dir)
     {
         if (dir == Directions.Top || dir == Directions.Down)
-            gameObject.transform.DORotate(new Vector3(0, 0, 90), 0);
+        {
+            _isRotate = true;
+            _spriteRenderer.gameObject.transform.DORotate(new Vector3(0, 0, 90), 0);
+        }
     }
-    public void ChangeSprite(Sprite newSprite)
+    public void ChangeSprite(int index)
     {
-        _spriteRenderer.sprite = newSprite;
+        _spriteRenderer.sprite = _sprites[index];
+
+        if (!_isRotate) return;
+        
+        if(index == _sprites.Length-1)
+            _spriteRenderer.gameObject.transform.DORotate(new Vector3(0, 0, 0), 0);
+        else
+            _spriteRenderer.gameObject.transform.DORotate(new Vector3(0, 0, 90), 0);
+
     }
 }

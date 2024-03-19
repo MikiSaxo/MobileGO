@@ -36,7 +36,7 @@ public class Laser : MonoBehaviour
             _lasersOnModule.Add(go.GetComponent<LaserOnModule>());
 
             go.GetComponent<LaserOnModule>().Init(_myDirection);
-            go.GetComponent<LaserOnModule>().ChangeSprite(_spritesLaserOnModule[0]);
+            go.GetComponent<LaserOnModule>().ChangeSprite(0);
         }
     }
 
@@ -74,9 +74,9 @@ public class Laser : MonoBehaviour
 
             // Block sprite or not
             if (!_isBlock && _count <= _spritesLaserOnModule.Length - 1)
-                laser.ChangeSprite(_spritesLaserOnModule[_count]);
+                laser.ChangeSprite(_count);
             else
-                laser.ChangeSprite(_spritesLaserOnModule[0]);
+                laser.ChangeSprite(0);
 
 
             // Death module if not block
@@ -95,7 +95,7 @@ public class Laser : MonoBehaviour
             ResetDeathModules();
         }
 
-        if (_count == _spritesLaserOnModule.Length - 1)
+        if (_count <= _spritesLaserOnModule.Length - 1)
             _laserModuleImg.sprite = _spritesLaserModule[_count];
     }
 
