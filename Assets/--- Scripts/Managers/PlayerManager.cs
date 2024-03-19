@@ -10,12 +10,13 @@ public class PlayerManager : MonoBehaviour
     public event Action PlayerHasSwipe;
     public event Action PlayerIsDead;
     
-    [SerializeField] private Module _currentModule;
     [SerializeField] private float _timeToMove = .5f;
 
+    private Module _currentModule;
     private Module _startModule;
     private bool _isDead;
     private bool _isEnd;
+    private Directions _saveLastDir;
     public bool CanMove { get; set; }
 
     private void Awake()
@@ -29,12 +30,6 @@ public class PlayerManager : MonoBehaviour
         CanMove = true;
     }
 
-    public void GoStartPos()
-    {
-        if(_currentModule != null)
-            gameObject.transform.position = _currentModule.gameObject.transform.position;
-    }
-
     public void WantToSwipe(Directions dir)
     {
         if (_isDead || CanMove == false) return;
@@ -44,7 +39,8 @@ public class PlayerManager : MonoBehaviour
         var mod = _currentModule.GetModuleNeighbor(dir);
 
         if (CheckIfCanSwipe(mod) == false) return;
-        
+
+        _saveLastDir = dir;
         _currentModule = mod;
         gameObject.transform.DOComplete();
         gameObject.transform.DOMove(_currentModule.gameObject.transform.position, _timeToMove).SetEase(Ease.OutSine);
@@ -104,6 +100,17 @@ public class PlayerManager : MonoBehaviour
     IEnumerator WaitGoDeath()
     {
         _isDead = true;
+
+        yield return new WaitForSeconds(_timeToMove-.2f);
+        
+        if(_saveLastDir == Directions.Down)
+            gameObject.GetComponent<SpriteView>().PlayAction("DeathDown");
+        else if(_saveLastDir == Directions.Top)
+            gameObject.GetComponent<SpriteView>().PlayAction("DeathUp");
+        else if(_saveLastDir == Directions.Left)
+            gameObject.GetComponent<SpriteView>().PlayAction("DeathLeft");
+        else if(_saveLastDir == Directions.Right)
+            gameObject.GetComponent<SpriteView>().PlayAction("DeathRight");
         
         yield return new WaitForSeconds(_timeToMove);
         

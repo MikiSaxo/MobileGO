@@ -192,6 +192,46 @@ MonoBehaviour:
     - {fileID: 721994866, guid: 4b1e538532234de4789df1ab204f518a, type: 3}
     - {fileID: 681572082, guid: 4b1e538532234de4789df1ab204f518a, type: 3}
     - {fileID: -700572074, guid: 4b1e538532234de4789df1ab204f518a, type: 3}
+  - Name: DeathUp
+    TimeBetweenFrames: 0.08
+    SpriteSheet:
+    - {fileID: -41017073, guid: 6c9290e202cde344393f4b127031d91d, type: 3}
+    - {fileID: 1546829124, guid: 6c9290e202cde344393f4b127031d91d, type: 3}
+    - {fileID: 1772773578, guid: 6c9290e202cde344393f4b127031d91d, type: 3}
+    - {fileID: -273200011, guid: 6c9290e202cde344393f4b127031d91d, type: 3}
+    - {fileID: 201036157, guid: 6c9290e202cde344393f4b127031d91d, type: 3}
+    - {fileID: 1491236556, guid: 6c9290e202cde344393f4b127031d91d, type: 3}
+    - {fileID: -2106793727, guid: 6c9290e202cde344393f4b127031d91d, type: 3}
+  - Name: DeathDown
+    TimeBetweenFrames: 0.08
+    SpriteSheet:
+    - {fileID: 1246366693, guid: 2221fc13b278ef04c8a781296aff3fef, type: 3}
+    - {fileID: 548214875, guid: 2221fc13b278ef04c8a781296aff3fef, type: 3}
+    - {fileID: 163125446, guid: 2221fc13b278ef04c8a781296aff3fef, type: 3}
+    - {fileID: 220514359, guid: 2221fc13b278ef04c8a781296aff3fef, type: 3}
+    - {fileID: 2018631601, guid: 2221fc13b278ef04c8a781296aff3fef, type: 3}
+    - {fileID: 1537331664, guid: 2221fc13b278ef04c8a781296aff3fef, type: 3}
+    - {fileID: -695724409, guid: 2221fc13b278ef04c8a781296aff3fef, type: 3}
+  - Name: DeathLeft
+    TimeBetweenFrames: 0.08
+    SpriteSheet:
+    - {fileID: -936746131, guid: 6909b09206187c347ae2c6802ee3fe2d, type: 3}
+    - {fileID: 1611488023, guid: 6909b09206187c347ae2c6802ee3fe2d, type: 3}
+    - {fileID: 902352850, guid: 6909b09206187c347ae2c6802ee3fe2d, type: 3}
+    - {fileID: -342407402, guid: 6909b09206187c347ae2c6802ee3fe2d, type: 3}
+    - {fileID: -1064011936, guid: 6909b09206187c347ae2c6802ee3fe2d, type: 3}
+    - {fileID: -1591602303, guid: 6909b09206187c347ae2c6802ee3fe2d, type: 3}
+    - {fileID: 395617809, guid: 6909b09206187c347ae2c6802ee3fe2d, type: 3}
+  - Name: DeathRight
+    TimeBetweenFrames: 0.08
+    SpriteSheet:
+    - {fileID: -169443891, guid: 1b5711f9dc686f84a88c75cbff9c8718, type: 3}
+    - {fileID: 503273369, guid: 1b5711f9dc686f84a88c75cbff9c8718, type: 3}
+    - {fileID: 618333380, guid: 1b5711f9dc686f84a88c75cbff9c8718, type: 3}
+    - {fileID: -1257322891, guid: 1b5711f9dc686f84a88c75cbff9c8718, type: 3}
+    - {fileID: -856698240, guid: 1b5711f9dc686f84a88c75cbff9c8718, type: 3}
+    - {fileID: 1431084618, guid: 1b5711f9dc686f84a88c75cbff9c8718, type: 3}
+    - {fileID: 1756099136, guid: 1b5711f9dc686f84a88c75cbff9c8718, type: 3}
   OnActionEnd:
     m_PersistentCalls:
       m_Calls: []
