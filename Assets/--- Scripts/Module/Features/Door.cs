@@ -28,7 +28,7 @@ public class Door : Wall
         //gameObject.transform.position = _wallInfos[0].NewPos.localPosition;
 
         
-        StartCoroutine(WaitToTakePosition());
+        //StartCoroutine(WaitToTakePosition());
     }
 
     IEnumerator WaitToTakePosition()

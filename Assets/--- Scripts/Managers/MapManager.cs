@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -28,27 +27,26 @@ public class MapManager : MonoBehaviour
 
     private void SetPosAllLevels()
     {
-        // for (int i = 1; i < _allLevels.Length; i++)
-        // {
-        //     _allLevels[i].transform.position = _levelPoints[2].position;
-        //     _allLevels[i].SetActive(false);
-        // }
-        // _allLevels[0].transform.position = _levelPoints[1].position;
+
+        SpawnNewLevel();
+      
         
+        // _allLevels[_currentLevel].transform.DOMove(_levelPoints[1].position, _timeToEnterLevel).SetEase(Ease.InExpo).OnComplete(TpPlayer);
+        StartCoroutine(WaitMoveLevel());
+
+
+        // PlayerManager.Instance.GoStartPos();
+    }
+
+    private void SpawnNewLevel()
+    {
         GameObject newLvl = Instantiate(_allLevels[_currentLevel], _levelPoints[0].position, Quaternion.identity);
         _nextStartPoint = newLvl.GetComponent<Level>().StartModule;
-        UIManager.Instance.GoMagnet();
-        newLvl.transform.DOMove(_levelPoints[1].position, _timeToEnterLevel).SetEase(Ease.InExpo).OnComplete(TpPlayer);
         _allLevels[_currentLevel] = newLvl;
-        
-
-        PlayerManager.Instance.GoStartPos();
     }
 
     public void ChangeLevel()
     {
-        // _nextStartPoint = nextStartPoint;
-        
         _currentLevel++;
 
         if (_currentLevel == _allLevels.Length)
@@ -57,15 +55,20 @@ public class MapManager : MonoBehaviour
             return;
         }
 
-        GameObject newLvl = Instantiate(_allLevels[_currentLevel], _levelPoints[0].position, Quaternion.identity);
-        _nextStartPoint = newLvl.GetComponent<Level>().StartModule;
-        UIManager.Instance.GoMagnet();
-        //_allLevels[_currentLevel].SetActive(true);
+        SpawnNewLevel();
+
         PlayerManager.Instance.CanMove = false;
 
-        _allLevels[_currentLevel] = newLvl;
+
+        StartCoroutine(WaitMoveLevel());
+    }
+
+    IEnumerator WaitMoveLevel()
+    {
+        yield return new WaitForSeconds(.2f);
         
-        _allLevels[_currentLevel - 1].transform.DOMove(_levelPoints[2].position, _timeToExitLevel).SetEase(Ease.InExpo);
+        if(_currentLevel != 0)
+            _allLevels[_currentLevel - 1].transform.DOMove(_levelPoints[2].position, _timeToExitLevel).SetEase(Ease.InExpo);
 
         if(_nextStartPoint != null)
             _allLevels[_currentLevel].transform.DOMove(_levelPoints[1].position, _timeToEnterLevel).SetEase(Ease.InExpo).OnComplete(TpPlayer);

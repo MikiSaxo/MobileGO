@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
 
     public void GoMagnet()
     {
-        StartCoroutine(WaitMagnet());
+        //StartCoroutine(WaitMagnet());
     }
 
     IEnumerator WaitMagnet()

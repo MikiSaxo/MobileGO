@@ -86,7 +86,7 @@ public class Wall : MonoBehaviour
             downMod.AddWall(new []{this, null, null, null});
     }
 
-    private void GoWaitToReplace()
+    public void GoWaitToReplace()
     {
         if (_startNextState)
         {

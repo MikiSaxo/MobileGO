@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 1796608985552321640}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1981892760675672773
 MonoBehaviour:
@@ -57,7 +57,7 @@ MonoBehaviour:
   - {fileID: 7540595, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
   - {fileID: -1008341806, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
   - {fileID: -907996925, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
-  - {fileID: -960706131, guid: 1f9ef68bf0b878d4f8790090b28a63f3, type: 3}
+  - {fileID: -173520953, guid: 81df068c93fa5d9469e63f534f77b9c1, type: 3}
   _modulesToLaser:
   - {fileID: 0}
   - {fileID: 0}

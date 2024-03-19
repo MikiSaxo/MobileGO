@@ -24,7 +24,7 @@ public class StartPoint : ModuleFeature
         // print($"----> {new Vector3(pos.x, pos.y + imgSize.y, 0)}");
     }
 
-    private void GoMagnetModules()
+    public void GoMagnetModules()
     {
         _module = gameObject.GetComponent<Module>();
         _module.Magnet(_imgSize);

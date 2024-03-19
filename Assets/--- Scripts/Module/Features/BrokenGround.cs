@@ -16,8 +16,6 @@ public class BrokenGround : ModuleFeature
     private Sprite _notBrokenGround;
     private Module _module;
 
-    public bool IsBrokenModule { get; set; }
-
     protected override void Start()
     {
         base.Start();
@@ -30,8 +28,8 @@ public class BrokenGround : ModuleFeature
     private void GoBroken()
     {
         _spriteGround.sprite = _brokenGround;
-        IsBrokenModule = true;
         _module.IsBlockedModule = true;
+        
         Instantiate(_fxBrokenGround, transform.position, Quaternion.identity);
         _fxWillBroke.SetActive(false);
     }
@@ -43,7 +41,9 @@ public class BrokenGround : ModuleFeature
 
     protected override void ResetStartPos()
     {
-        IsBrokenModule = false;
+        _module.IsBlockedModule = false;
         _spriteGround.sprite = _notBrokenGround;
+        
+        _fxWillBroke.SetActive(true);
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
@@ -13,6 +14,13 @@ public class CrownFloat : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(WaitBeforeFloating());
+    }
+
+    IEnumerator WaitBeforeFloating()
+    {
+        yield return new WaitForSeconds(2.5f);
+        
         _initialPosition = _crown.transform.position;
         FloatUpAndDown();
         RotateLeft();
@@ -27,13 +35,11 @@ public class CrownFloat : MonoBehaviour
 
     private void RotateLeft()
     {
-        _crown.transform.DORotate(new Vector3(0, 0, _rotationAngle), _rotationDuration).SetEase(Ease.Linear)
-            .OnComplete(RotateRight);
+        _crown.transform.DORotate(new Vector3(0, 0, _rotationAngle), _rotationDuration).SetEase(Ease.Linear).OnComplete(RotateRight);
     }
 
     private void RotateRight()
     {
-        _crown.transform.DORotate(new Vector3(0, 0, -_rotationAngle), _rotationDuration).SetEase(Ease.Linear)
-            .OnComplete(RotateLeft);
+        _crown.transform.DORotate(new Vector3(0, 0, -_rotationAngle), _rotationDuration).SetEase(Ease.Linear).OnComplete(RotateLeft);
     }
 }
