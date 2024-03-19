@@ -11,9 +11,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     
-    public event Action GoMagnetModules;
-    public event Action GoMagnetWalls;
-
     [Header("--- Bonus ---")]
     [SerializeField] private TMP_Text _bonusTxt;
     [SerializeField] private Image _bonusImg;
@@ -44,25 +41,13 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         _bonusTxt.text = $"{_bonusCount}";
-        GoMagnet();
+
+        // Make Fade disappear & Bonus appear
         _fade.DOFade(0, _timeFadeOut*3);
         _bonusTxt.DOFade(1, _timeFadeOut);
         _bonusImg.DOFade(1, _timeFadeOut);
     }
 
-    public void GoMagnet()
-    {
-        //StartCoroutine(WaitMagnet());
-    }
-
-    IEnumerator WaitMagnet()
-    {
-        // yield return new WaitForSeconds(2f);
-        yield return new WaitForSeconds(.1f);
-        GoMagnetModules?.Invoke();
-        yield return new WaitForSeconds(.1f);
-        GoMagnetWalls?.Invoke();
-    }
 
     public void UpdateNbBonus(int add)
     {
@@ -79,6 +64,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator AnimEndGame()
     {
+        // Juggle between fade & bonus to avoid having 2 bonus txt 
         _bonusTxt.DOFade(0, _timeFadeIn);
         _bonusImg.DOFade(0, _timeFadeIn);
         _fade.DOFade(1, _timeFadeIn);

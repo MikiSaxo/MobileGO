@@ -14,25 +14,14 @@ public class StartPoint : ModuleFeature
 
     protected override void Start()
     {
-        UIManager.Instance.GoMagnetModules += GoMagnetModules;
-        
         var imgRect = _spriteRenderer.size;
         _imgSize = new Vector2(imgRect.x, imgRect.y);
-        print($"imgSize : {_imgSize}");
-
-       
-        // print($"----> {new Vector3(pos.x, pos.y + imgSize.y, 0)}");
     }
 
     public void GoMagnetModules()
     {
+        // Called by Level Parent to have only 1 module who start the magnet
         _module = gameObject.GetComponent<Module>();
         _module.Magnet(_imgSize);
-    }
-    
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        UIManager.Instance.GoMagnetModules -= GoMagnetModules;
     }
 }

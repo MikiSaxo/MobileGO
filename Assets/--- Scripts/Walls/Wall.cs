@@ -24,7 +24,6 @@ public class Wall : MonoBehaviour
     {
         PlayerManager.Instance.PlayerHasSwipe += ChangePos;
         PlayerManager.Instance.PlayerIsDead += ResetStartPos;
-        UIManager.Instance.GoMagnetWalls += GoWaitToReplace;
     }
 
     private void ChangePos()
@@ -59,7 +58,6 @@ public class Wall : MonoBehaviour
         }
         else
         {
-            //gameObject.transform.DOScale(Vector3.one * .5f, .5f).SetEase(Ease.OutBounce);
             if(_spriteWallInPlace != null && _wallInPlaceSprites.Length > 0)
                 _spriteWallInPlace.sprite = _wallInPlaceSprites[1];
         }
@@ -157,6 +155,5 @@ public class Wall : MonoBehaviour
     {
         PlayerManager.Instance.PlayerHasSwipe -= ChangePos;
         PlayerManager.Instance.PlayerIsDead -= ResetStartPos;
-        UIManager.Instance.GoMagnetWalls -= GoWaitToReplace;
     }
 }

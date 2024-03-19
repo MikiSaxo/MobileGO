@@ -13,11 +13,6 @@ public class WallPos : MonoBehaviour
 
     private const float HalfSizeSprite = 0.16f;
 
-    private void Start()
-    {
-        UIManager.Instance.GoMagnetWalls += GoMagnet;
-    }
-
     public void GoMagnet()
     {
         if (ModuleAtTop != null)
@@ -66,10 +61,5 @@ public class WallPos : MonoBehaviour
         Gizmos.color = Color.blue;
         if (ModuleAtRight != null)
             Gizmos.DrawLine(pos, ModuleAtRight.gameObject.transform.position);
-    }
-
-    private void OnDisable()
-    {
-        UIManager.Instance.GoMagnetWalls -= GoMagnet;
     }
 }
