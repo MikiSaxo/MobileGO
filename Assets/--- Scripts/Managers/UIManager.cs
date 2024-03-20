@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     
     [Header("--- End ---")]
     [SerializeField] private TMP_Text _winText;
+    [SerializeField] private Image _winThroneImg;
     [SerializeField] private float _timeSpawnWinText = 1;
     [SerializeField] private float _timeDespawnWinText = .5f;
     [SerializeField] private float _timeGoMainScene = 5;
@@ -80,13 +81,15 @@ public class UIManager : MonoBehaviour
         _bonusTxt.DOFade(1, _timeSpawnWinText);
         _bonusImg.DOFade(1, _timeSpawnWinText);
         _winText.DOFade(1, _timeSpawnWinText);
+        _winThroneImg.DOFade(1, _timeSpawnWinText);
         
         yield return new WaitForSeconds(_timeGoMainScene-_timeDespawnWinText);
         
         _winText.DOFade(0, _timeDespawnWinText);
         _bonusTxt.DOFade(0, _timeDespawnWinText);
         _bonusImg.DOFade(0, _timeDespawnWinText);
-        
+        _winThroneImg.DOFade(0, _timeSpawnWinText);
+
         yield return new WaitForSeconds(_timeDespawnWinText);
         
         SceneManager.LoadScene(0);
