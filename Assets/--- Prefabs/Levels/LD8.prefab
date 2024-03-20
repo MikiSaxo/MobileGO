@@ -3344,11 +3344,11 @@ PrefabInstance:
     - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: _modulesToLaser.Array.data[0]
       value: 
-      objectReference: {fileID: 7410181831984259132}
+      objectReference: {fileID: 7023696669129391647}
     - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: _modulesToLaser.Array.data[1]
       value: 
-      objectReference: {fileID: 3837839117397054169}
+      objectReference: {fileID: 3592337518209299463}
     - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: _modulesToLaser.Array.data[2]
       value: 
@@ -3356,11 +3356,11 @@ PrefabInstance:
     - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: _modulesToLaser.Array.data[3]
       value: 
-      objectReference: {fileID: 3592337518209299463}
+      objectReference: {fileID: 3837839117397054169}
     - target: {fileID: 1981892760675672773, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: _modulesToLaser.Array.data[4]
       value: 
-      objectReference: {fileID: 7023696669129391647}
+      objectReference: {fileID: 7410181831984259132}
     - target: {fileID: 2356509090566117397, guid: b53e4571d3a879f4d838ba77d9356f14, type: 3}
       propertyPath: m_RootOrder
       value: -1

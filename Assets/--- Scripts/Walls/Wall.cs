@@ -102,6 +102,8 @@ public class Wall : MonoBehaviour
         if (!_hasInit)
         {
             gameObject.transform.DOComplete();
+            gameObject.transform.DOMove(_wallInfos[0].NewPos.position, 0);
+            gameObject.transform.DOComplete();
             _hasInit = true;
         }
     }

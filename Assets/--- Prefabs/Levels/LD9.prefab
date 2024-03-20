@@ -5571,6 +5571,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5763767374539644059}
     - target: {fileID: 21190550400108259, guid: ef4b4c17e7e486949bab9325501f3219, type: 3}
+      propertyPath: _wallInfos.Array.data[1].NewPos
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 21190550400108259, guid: ef4b4c17e7e486949bab9325501f3219, type: 3}
       propertyPath: _wallInfos.Array.data[0].ModuleAtTop
       value: 
       objectReference: {fileID: 8754522754309640582}

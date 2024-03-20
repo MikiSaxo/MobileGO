@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance;
 
     public event Action PlayerHasSwipe;
+    public event Action PlayerHasSwipe2;
     public event Action PlayerIsDead;
     
     [SerializeField] private float _timeToMove = .5f;
@@ -47,6 +48,7 @@ public class PlayerManager : MonoBehaviour
         gameObject.transform.DOMove(_currentModule.gameObject.transform.position, _timeToMove).SetEase(Ease.OutSine);
         
         PlayerHasSwipe?.Invoke();
+        PlayerHasSwipe2?.Invoke();
         mod.OnPlayerEnter();
         
         if (_isEnd) StartCoroutine(WaitToGoNextStation(_startModule));
